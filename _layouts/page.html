@@ -1,0 +1,21 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+{% include head.html %}
+
+<body>
+  <!--[if lte IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+  {% include navigation.html %}
+  <main>
+    {{content}}
+  </main>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+
+  <!-- {% include footer.html %} -->
+</body>
+{% include scripts.html %}
+
+</html>
