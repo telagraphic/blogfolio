@@ -1,16 +1,4 @@
-// Text
-
-body {
-
-  --primary-header: hsl(0,0,13%);
-  --secondary-header: hsl(0, 0%, 20%);
-  --primary-text: hsl(0, 0%, 30%);
-  --secondary-text: hsl(0, 0%, 43%);
-
-}
-
-
-body {
+:root {
   --gray-900: hsl(210, 0%, 0%);
   --gray-800: hsl(210, 0%, 25%);
   --gray-700: hsl(210, 0%, 50%);

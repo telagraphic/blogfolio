@@ -1,0 +1,64 @@
+// <nav class="navigation">
+//   <ul>
+//     <li>
+//       <a href="/index.html">
+//         @
+//       </a>
+//     </li>
+//     <li>
+//       <a href="/posts.html">
+//         POSTS
+//       </a>
+//     </li>
+//     <li>
+//       <a href="/work.html">
+//         WORK
+//       </a>
+//     </li>
+//     <li>
+//       <a href="/about.html">
+//         ABOUT
+//       </a>
+//     </li>
+//   </ul>
+// </nav>
+
+.navigation {
+
+  ul {
+
+    display: flex;
+
+
+    list-style: none;
+  }
+
+  li {
+    padding-right: 2rem;
+
+  }
+
+  a {
+    font-family: 'Public Sans';
+    font-weight: 600;
+
+    color: var(--gray-900);
+    text-decoration: none;
+
+
+    &:hover {
+      text-decoration: underline;
+
+    }
+
+    &:focus {
+      text-decoration: underline;
+
+    }
+
+    &:visited {
+
+    }
+  }
+
+}
