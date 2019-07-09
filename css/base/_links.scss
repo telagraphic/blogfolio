@@ -1,0 +1,36 @@
+a {
+
+  color: var(--gray-900);
+  text-decoration: none;
+
+
+  &:hover {
+    text-decoration: underline;
+
+  }
+
+  &:focus {
+    // text-decoration: underline;
+
+  }
+
+  &:visited {
+
+  }
+}
+
+//
+// &:hover {
+//   border-bottom: 2px solid var(--gray-900);
+//   padding-bottom: 5px;
+//
+// }
+//
+// &:focus {
+//   text-decoration: underline;
+//
+// }
+//
+// &:visited {
+//
+// }

@@ -25,34 +25,41 @@
 
 .navigation {
 
+  width: 89%;
+  margin: 1rem auto;
+
+  @media (min-width: 650px) {
+    width: 55%;
+  }
+
+
   ul {
-
     display: flex;
-
 
     list-style: none;
   }
 
   li {
     padding-right: 2rem;
+    font-size: calc(16px + (21 - 16) * ((100vw - 320px) / (2000 - 320)));
 
   }
 
   a {
-    font-family: 'Public Sans';
-    font-weight: 600;
+    font-family: 'Public Sans Semi-Bold';
 
     color: var(--gray-900);
     text-decoration: none;
 
 
     &:hover {
-      text-decoration: underline;
+      border-bottom: 2px solid var(--gray-900);
+      padding-bottom: 5px;
 
     }
 
     &:focus {
-      text-decoration: underline;
+      // text-decoration: underline;
 
     }
 

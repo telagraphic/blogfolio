@@ -1,0 +1,44 @@
+.home-page {
+
+  width: 89%;
+  margin: 5% auto;
+
+  @media (min-width: 650px) {
+    width: 55%;
+    margin: 7% auto;
+  }
+
+
+  p {
+    padding: 3.5% 0;
+
+    font-family: 'Public Sans Extra-Light';
+    font-size: calc(24px + (65 - 24) * ((100vw - 320px) / (2000 - 320)));
+
+  }
+
+  a {
+    font-family: 'Public Sans Regular';
+    // font-weight: 800;
+  }
+
+  .links-desktop {
+    display: none;
+
+    @media (min-width: 650px) {
+      display: flex;
+      flex-direction: row;
+    }
+
+  }
+
+  .links-mobile {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 650px) {
+      display: none;
+    }
+
+  }
+}
