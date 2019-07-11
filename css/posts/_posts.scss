@@ -34,7 +34,7 @@
   }
 }
 
-.post {
+.posts__link {
 
   display: inline-block;
   height: 100%;
@@ -63,7 +63,7 @@
   }
 }
 
-.post__content {
+.posts__link-content {
   padding: 1rem 1rem;
 
   @media (min-width: 650px) {
