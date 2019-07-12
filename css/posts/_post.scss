@@ -1,5 +1,6 @@
 .post {
   margin: 5% auto;
+  color: var(--gray-800);
 
 }
 
@@ -75,12 +76,11 @@
   a {
     font-family: 'Public Sans Italic';
     // text-decoration: underline;
-    border-bottom: 1px solid black;
     padding-bottom: .05rem;
-
 
     &:hover {
       text-decoration: none;
+      border-bottom: 1px solid black;
 
     }
 

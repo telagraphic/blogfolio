@@ -6,11 +6,9 @@ a {
 
   &:hover {
     text-decoration: underline;
-
   }
 
   &:focus {
-    // text-decoration: underline;
 
   }
 
@@ -18,19 +16,3 @@ a {
 
   }
 }
-
-//
-// &:hover {
-//   border-bottom: 2px solid var(--gray-900);
-//   padding-bottom: 5px;
-//
-// }
-//
-// &:focus {
-//   text-decoration: underline;
-//
-// }
-//
-// &:visited {
-//
-// }
