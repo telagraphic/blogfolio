@@ -1,5 +1,4 @@
 .about {
-
   width: 100%;
   margin: 5% auto;
 
@@ -7,7 +6,6 @@
     width: 55%;
     margin: 5% auto;
   }
-
 }
 
 .about__header {
@@ -32,15 +30,12 @@
     }
 
   }
-
 }
 
 .about__resume {
 
   max-width: 89%;
   margin: 1% auto;
-
-  // padding: 0 1rem;
 
   @media (min-width: 850px) {
     max-width: 100%;
@@ -62,8 +57,6 @@
   p {
 
   }
-
-
 }
 
 .about__resume-section {
@@ -80,7 +73,6 @@
       // max-width: 100%;
       padding: 2% 0;
     }
-
 
     font-family: 'Public Sans Thin';
     font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
@@ -130,5 +122,4 @@
       font-family: 'Public Sans Thin Italic';
     }
   }
-
 }

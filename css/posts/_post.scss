@@ -17,12 +17,12 @@
   }
 
   h2 {
-    font-family: 'Public Sans Light Italic';
+    font-family: var(--light-italic);
     font-size: calc(21px + (55 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
 
   time {
-    font-family: 'Public Sans Thin Italic';
+    font-family: var(--thin-italic);
     font-size: calc(14px + (24 - 14) * ((100vw - 320px) / (2000 - 320)));
   }
 

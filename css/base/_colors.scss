@@ -1,31 +1,48 @@
 :root {
-  --gray-900: hsl(210, 0%, 0%);
-  --gray-800: hsl(210, 0%, 25%);
-  --gray-700: hsl(210, 0%, 50%);
-  --gray-600: hsl(0, 0%, 28%);
-  --gray-500: hsl(0, 0%, 28%);
-  --gray-400: hsl(0, 0%, 28%);
-  --gray-300: hsl(0, 0%, 28%);
-  --gray-200: hsl(0, 0%, 28%);
-  --gray-100: hsl(0, 0%, 28%);
 
-  --thin: 'Public Sans Thin';
-  --thin-italic: 'Public Sans Thin Italic';
-  --extra-light-italic: 'Public Sans Extra Light Italic';
-  --extra-light: 'Public Sans Extra Light';
-  --light: 'Public Sans Light';
-  --light-italic: 'Public Sans Light Italic';
-  --italic: 'Public Sans Italic';
-  --medium: 'Public Sans Medium';
-  --medium-italic: 'Public Sans Medium Italic';
-  --regular: 'Public Sans Regular';
-  --bold: 'Public Sans Bold';
-  --bold-italic: 'Public Sans Bold Italic';
-  --semi-bold: 'Public Sans Semi-Bold';
-  --semi-bold-italic: 'Public Sans Semi Bold Italic';
-  --extra-bold: 'Public Sans Extra Bold';
-  --extra-bold-italic: 'Public Sans Extra Bold Italic';
-  --black: 'Public Sans Black';
-  --black-italic: 'Public Sans Black Italic';
+  // Progressive Gray
+  --gray-900: hsl(0, 0%, 6%);
+  --gray-800: hsl(0, 0%, 12%);
+  --gray-700: hsl(0, 0%, 24%);
+  --gray-600: hsl(0, 0%, 36%);
+  --gray-500: hsl(0, 0%, 55%);
+  --gray-400: hsl(0, 0%, 0%);
+  --gray-300: hsl(0, 0%, 0%);
+  --gray-200: hsl(0, 0%, 0%);
+  --gray-100: hsl(0, 0%, 0%);
 
+  // Nuetral Grays
+  // --gray-900: hsl(0, 0%, 28%);
+  // --gray-800: hsl(0, 0%, 43%);
+  // --gray-700: hsl(0, 0%, 58%);
+  // --gray-600: hsl(0, 0%, 76%);
+  // --gray-500: hsl(0, 0%, 88%);
+  // --gray-400: hsl(0, 0%, 0%);
+  // --gray-300: hsl(0, 0%, 0%);
+  // --gray-200: hsl(0, 0%, 0%);
+  // --gray-100: hsl(0, 0%, 0%);
+
+  // Cool Grays
+  // --gray-900: hsl(209, 15%, 28%);
+  // --gray-800: hsl(207, 12%, 43%);
+  // --gray-700: hsl(208, 12%, 58%);
+  // --gray-600: hsl(210, 16%, 76%);
+  // --gray-500: hsl(208, 21%, 88%);
+  // --gray-400: hsl(0, 0%, 0%);
+  // --gray-300: hsl(0, 0%, 0%);
+  // --gray-200: hsl(0, 0%, 0%);
+  // --gray-100: hsl(0, 0%, 0%);
+
+  // Warm Grays
+  // --gray-900: hsl(41, 15%, 28%);
+  // --gray-800: hsl(40, 12%, 43%);
+  // --gray-700: hsl(39, 12%, 58%);
+  // --gray-600: hsl(39, 16%, 76%);
+  // --gray-500: hsl(39, 21%, 88%);
+  // --gray-400: hsl(0, 0%, 0%);
+  // --gray-300: hsl(0, 0%, 0%);
+  // --gray-200: hsl(0, 0%, 0%);
+  // --gray-100: hsl(0, 0%, 0%);
+
+  color: var(--gray-900);
 }

@@ -1,5 +1,24 @@
+:root {
+  --thin: 'Public Sans Thin';
+  --thin-italic: 'Public Sans Thin Italic';
+  --extra-light-italic: 'Public Sans Extra Light Italic';
+  --extra-light: 'Public Sans Extra Light';
+  --light: 'Public Sans Light';
+  --light-italic: 'Public Sans Light Italic';
+  --italic: 'Public Sans Italic';
+  --medium: 'Public Sans Medium';
+  --medium-italic: 'Public Sans Medium Italic';
+  --regular: 'Public Sans Regular';
+  --bold: 'Public Sans Bold';
+  --bold-italic: 'Public Sans Bold Italic';
+  --semi-bold: 'Public Sans Semi-Bold';
+  --semi-bold-italic: 'Public Sans Semi Bold Italic';
+  --extra-bold: 'Public Sans Extra Bold';
+  --extra-bold-italic: 'Public Sans Extra Bold Italic';
+  --black: 'Public Sans Black';
+  --black-italic: 'Public Sans Black Italic';
+}
+
 body {
-  font-family: 'Public Sans';
-  font-style: normal;
   font-size: 100%;
 }
