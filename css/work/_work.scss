@@ -24,7 +24,7 @@
   h2 {
     padding: 0 0 1rem 0;
 
-    font-family: 'Public Sans Thin Italic';
+    font-family: var(--thin-italic);
     font-weight: 100;
     font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
 
@@ -94,7 +94,7 @@
   }
 
   h3 {
-    font-family: 'Public Sans Light Italic';
+    font-family: var(--light-italic);
     font-weight: 100;
     font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
@@ -120,7 +120,7 @@
       margin: 2% auto;
     }
 
-    font-family: 'Public Sans Extra Light';
+    font-family: var(--extra-light);
     font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (2000 - 320)));
   }
 }

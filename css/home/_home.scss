@@ -12,13 +12,13 @@
   p {
     padding: 3.5% 0;
 
-    font-family: 'Public Sans Extra Light';
+    font-family: var(--extra-light);
     font-size: calc(24px + (65 - 24) * ((100vw - 320px) / (2000 - 320)));
 
   }
 
   a {
-    font-family: 'Public Sans Regular';
+    font-family: var(--regular);
 
     &:hover {
       text-decoration: underline;

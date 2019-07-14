@@ -60,21 +60,20 @@
     padding: 0rem;
   }
 
-  font-family: 'Public Sans Extra Light';
-  font-family: 'Public Sans Thin';
+  font-family: var(--thin);
   font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
   line-height: calc(20px + (38 - 20) * ((100vw - 320px) / (2000 - 320)));
 
 
   h3 {
     padding: 4% 0 0 0;
-    font-family: 'Public Sans Semi Bold Italic';
+    font-family: var(--semi-bold-italic);
     font-size: calc(18px + (35 - 18) * ((100vw - 320px) / (2000 - 320)));
   }
 
 
   a {
-    font-family: 'Public Sans Italic';
+    font-family: var(--italic);
     // text-decoration: underline;
     padding-bottom: .05rem;
 
@@ -135,7 +134,7 @@
     margin: 3% 0% 3% 0%;
 
     text-align: center;
-    font-family: 'Public Sans Semi Bold Italic';
+    font-family: var(--semi-bold-italic);
 
     @media (min-width: 850px) {
       margin: 3% 15% 3% 0%;
@@ -172,7 +171,7 @@
 
     margin: 5% 0;
 
-    font-family: 'Public Sans Light';
+    font-family: var(--light);
     font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
 
 
@@ -231,7 +230,7 @@
 
     background: hsl(0, 6%, 90%);
 
-    font-family: 'Public Sans Medium';
+    font-family: var(--medium);
     font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (2000 - 320)));
 
     tr {
@@ -253,7 +252,7 @@
   tbody {
     max-width: 100%;
 
-    font-family: 'Public Sans Thin';
+    font-family: var(--thin);
     font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (2000 - 320)));
 
     tr {

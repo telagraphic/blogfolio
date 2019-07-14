@@ -21,7 +21,7 @@
   }
 
   a {
-    font-family: 'Public Sans Semi-Bold';
+    font-family: var(--semi-bold);
 
     color: var(--gray-900);
     text-decoration: none;
