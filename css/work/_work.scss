@@ -25,7 +25,6 @@
     padding: 0 0 1rem 0;
 
     font-family: var(--thin-italic);
-    font-weight: 100;
     font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
 
     @media (min-width: 650px) {
@@ -94,7 +93,7 @@
   }
 
   h3 {
-    font-family: var(--light-italic);
+    font-family: var(--bold-italic);
     font-weight: 100;
     font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
