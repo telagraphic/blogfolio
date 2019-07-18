@@ -12,18 +12,12 @@
   p {
     padding: 3.5% 0;
 
-    // font-family: var(--extra-light);
-    // // font-family: var(--thin-italic);
-    // font-family: "Public Sans";
     font-weight: 200;
-
     font-size: calc(24px + (65 - 24) * ((100vw - 320px) / (2000 - 320)));
 
   }
 
   a {
-    // font-family: var(--regular);
-    // font-family: "Public Sans";
     font-weight: 500;
 
     &:hover {
