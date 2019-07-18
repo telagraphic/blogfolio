@@ -23,8 +23,8 @@
   h2 {
     padding: 0 0 1rem 0;
 
-    font-family: var(--thin-italic);
     font-weight: 100;
+    font-style: italic;
     font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
 
     @media (min-width: 650px) {
@@ -72,14 +72,16 @@
 
 
   h3 {
-    font-family: var(--bold-italic);
+    font-weight: 600;
+    font-style: italic;
     font-size: calc(24px + (65 - 24) * ((100vw - 320px) / (2000 - 320)));
     line-height: calc(24px + (60 - 24) * ((100vw - 320px) / (2000 - 320)));
   }
 
   p {
     padding: .5% 0 3% 0;
-    font-family: var(--thin);
+
+    font-weight: 100;
     font-size: calc(18px + (25 - 18) * ((100vw - 320px) / (2000 - 320)));
 
     @media (min-width: 650px) {
@@ -88,7 +90,7 @@
   }
 
   time {
-    font-family: var(--italic);
+    font-style: italic;
 
     @media (min-width: 650px) {
       padding: 0 0 1rem 0;

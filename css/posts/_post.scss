@@ -17,12 +17,16 @@
   }
 
   h2 {
-    font-family: var(--light-italic);
+    // font-family: var(--light-italic);
+    font-weight: 300;
+    font-style: italic;
     font-size: calc(21px + (55 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
 
   time {
     font-family: var(--thin-italic);
+    font-weight: 100;
+    font-style: italic;
     font-size: calc(14px + (24 - 14) * ((100vw - 320px) / (2000 - 320)));
   }
 
@@ -60,21 +64,23 @@
     padding: 0rem;
   }
 
-  font-family: var(--thin);
+  // font-family: var(--thin);
+  font-weight: 100;
   font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
   line-height: calc(20px + (38 - 20) * ((100vw - 320px) / (2000 - 320)));
 
 
   h3 {
     padding: 4% 0 0 0;
-    font-family: var(--semi-bold-italic);
+    // font-family: var(--semi-bold-italic);
+    font-weight: 700;
+    font-style: italic;
     font-size: calc(18px + (35 - 18) * ((100vw - 320px) / (2000 - 320)));
   }
 
 
   a {
-    font-family: var(--italic);
-    // text-decoration: underline;
+    font-style: italic;
     padding-bottom: .05rem;
 
     &:hover {
@@ -93,24 +99,13 @@
   p {
 
     max-width: 100%;
-    // max-width: 100ch;
     padding: 2% 0;
 
     @media (min-width: 850px) {
       max-width: 55ch;
-      // max-width: 100%;
       padding: 2% 0;
     }
   }
-
-
-
-
-  // <figure>
-  //   <img src="{{site.baseurl}}assets/flexulator/flexulator-1.png" alt="Flex Box Inspector">
-  //   <figcaption>Firefox Flexbox Inspector Console</figcaption>
-  // </figure>
-
 
 }
 
@@ -134,7 +129,8 @@
     margin: 3% 0% 3% 0%;
 
     text-align: center;
-    font-family: var(--semi-bold-italic);
+    font-weight: 700;
+    font-style: italic;
 
     @media (min-width: 850px) {
       margin: 3% 15% 3% 0%;
@@ -168,10 +164,9 @@
   }
 
   li {
-
     margin: 5% 0;
 
-    font-family: var(--light);
+    font-weight: 300;
     font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
 
 
@@ -230,7 +225,7 @@
 
     background: hsl(0, 6%, 90%);
 
-    font-family: var(--medium);
+    font-weight: 400;
     font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (2000 - 320)));
 
     tr {
@@ -253,6 +248,7 @@
     max-width: 100%;
 
     font-family: var(--thin);
+    font-weight: 100;
     font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (2000 - 320)));
 
     tr {

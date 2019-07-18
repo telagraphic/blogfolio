@@ -24,7 +24,8 @@
   h2 {
     padding: 0 0 1rem 0;
 
-    font-family: var(--thin-italic);
+    font-weight: 100;
+    font-style: italic;
     font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
 
     @media (min-width: 650px) {
@@ -93,8 +94,9 @@
   }
 
   h3 {
-    font-family: var(--bold-italic);
-    font-weight: 100;
+    font-weight: 600;
+    font-style: italic;
+
     font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
 
@@ -119,7 +121,7 @@
       margin: 2% auto;
     }
 
-    font-family: var(--extra-light);
+    font-weight: 200;
     font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (2000 - 320)));
   }
 }

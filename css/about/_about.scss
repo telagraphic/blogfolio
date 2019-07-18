@@ -21,8 +21,9 @@
   h2 {
     padding: 0 0 1rem 0;
 
-    font-family: var(--thin-italic);
+    // font-family: var(--thin-italic);
     font-weight: 100;
+    font-style: italic;
     font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
 
     @media (min-width: 650px) {
@@ -45,12 +46,16 @@
   }
 
   header {
-    font-family: var(--light-italic);
+    // font-family: var(--light-italic);
+    font-weight: 300;
+    font-style: italic;
     font-size: calc(21px + (55 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
 
   h3 {
-    font-family: var(--bold-italic);
+    // font-family: var(--bold-italic);
+    font-weight: 600;
+    font-style: italic;
     font-size: calc(21px + (55 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
 
@@ -74,7 +79,8 @@
       padding: 2% 0;
     }
 
-    font-family: var(--thin);
+    // font-family: var(--thin);
+    font-weight: 100;
     font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
     line-height: calc(20px + (38 - 20) * ((100vw - 320px) / (2000 - 320)));
 
@@ -82,26 +88,36 @@
 
   h4 {
     padding: 4% 0 0 0;
-    font-family: var(--semi-bold-italic);
+    // font-family: var(--semi-bold-italic);
+    font-weight: 700;
+    font-style: italic;
     font-size: calc(18px + (35 - 18) * ((100vw - 320px) / (2000 - 320)));
   }
 
   h5 {
-    font-family: var(--bold-italic);
+    // font-family: var(--bold-italic);
+    font-weight: 600;
+    font-style: italic;
     font-size: calc(21px + (55 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
 
   h6 {
-    font-family: var(--light-italic);
+    // font-family: var(--light-italic);
+    font-weight: 300;
+    font-style: italic;
     font-size: calc(18px + (40 - 18) * ((100vw - 320px) / (2000 - 320)));
 
     span {
-      font-family: var(--thin-italic);
+      // font-family: var(--thin-italic);
+      font-weight: 100;
+      font-style: italic;
     }
   }
 
   time {
-    font-family: var(--thin-italic);
+    // font-family: var(--thin-italic);
+    font-weight: 100;
+    font-style: italic;
     font-size: calc(14px + (24 - 14) * ((100vw - 320px) / (2000 - 320)));
   }
 
@@ -119,7 +135,9 @@
       margin: 0;
       padding: 0;
 
-      font-family: var(--thin-italic);
+      // font-family: var(--thin-italic);
+      font-weight: 100;
+      font-style: italic;
     }
   }
 }
