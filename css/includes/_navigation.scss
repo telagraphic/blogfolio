@@ -15,7 +15,8 @@
   }
 
   li {
-    padding-right: 2rem;
+    // padding-right: 2rem;
+    padding-right: 5%;
     font-size: calc(16px + (21 - 16) * ((100vw - 320px) / (2000 - 320)));
 
   }
@@ -30,11 +31,12 @@
     &:hover {
       border-bottom: 2px solid var(--gray-900);
       padding-bottom: 5px;
+      -webkit-tap-highlight-color: transparent;
 
     }
 
     &:focus {
-
+      -webkit-tap-highlight-color: transparent;
     }
 
     &:visited {

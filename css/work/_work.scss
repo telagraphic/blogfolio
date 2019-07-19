@@ -49,19 +49,19 @@
     padding: 0;
   }
 
-  @media (min-width: 1400px) {
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 2rem;
-    grid-template-rows: auto;
-
-    padding: 0;
-  }
+  // @media (min-width: 1400px) {
+  //   grid-template-columns: 1fr 1fr;
+  //   grid-column-gap: 2rem;
+  //   grid-template-rows: auto;
+  //
+  //   padding: 0;
+  // }
 
 }
 
 
 .work__project {
-  margin: 3% 0;
+  margin: 5% 0;
 
 
   @media (min-width: 850px) {
