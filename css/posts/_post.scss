@@ -69,10 +69,6 @@
 
   h3 {
     padding: 4% 0 0 0;
-<<<<<<< HEAD
-
-=======
->>>>>>> 73f5682d055dce9bd9fb5a92e106458bb5d8e5db
     font-weight: 700;
     font-style: italic;
     font-size: calc(18px + (35 - 18) * ((100vw - 320px) / (2000 - 320)));
@@ -183,6 +179,8 @@
 .post__table {
   max-width: 100%;
   margin: 1% auto;
+
+  // padding: 0 1rem;
 
   @media (min-width: 850px) {
     max-width: 55%;
