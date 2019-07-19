@@ -4,10 +4,11 @@ a {
 
   &:hover {
     text-decoration: underline;
+    -webkit-tap-highlight-color: transparent;
   }
 
   &:focus {
-
+    -webkit-tap-highlight-color: transparent;
   }
 
   &:visited {

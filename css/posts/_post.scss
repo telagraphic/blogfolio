@@ -69,7 +69,10 @@
 
   h3 {
     padding: 4% 0 0 0;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 73f5682d055dce9bd9fb5a92e106458bb5d8e5db
     font-weight: 700;
     font-style: italic;
     font-size: calc(18px + (35 - 18) * ((100vw - 320px) / (2000 - 320)));
@@ -77,7 +80,7 @@
 
 
   a {
-    font-style: italic;
+    font-weight: 500;
     padding-bottom: .05rem;
 
     &:hover {
@@ -230,8 +233,6 @@
 
       max-width: 100%;
       height: 100%;
-
-
     }
 
     th {

@@ -175,7 +175,6 @@
         ]).then(function(loadedFonts) {
           console.log("fonts are loaded into document");
 
-          // Render them at the same time
           loadedFonts.forEach(function(font) {
             document.fonts.add(font);
             console.log(font);
