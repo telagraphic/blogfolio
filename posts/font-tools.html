@@ -24,7 +24,7 @@ permalink: /font-tools
 
     <p>
       The cascade of commands described below will set up our machine with a python library called <a href="https://github.com/fonttools/fonttools">fonttools</a>
-      and <b>pyftsubset</b> which we can use to subset our webfonts, reducing file sizes for faster broswer performance.
+      and <b>pyftsubset</b> which we can use to subset our webfonts, reducing file sizes for faster browser performance.
     </p>
 
     <b class="superbold">
@@ -73,20 +73,12 @@ permalink: /font-tools
 
   </section>
 
-  <!-- <figure class="post__figure">
-    <img src="{{site.baseurl}}assets/flexulator/flexulator-1.png" alt="Flex Box Inspector">
-    <figcaption>
-      <h5>
-        Firefox Flexbox Inspector Console
-      </h5>
-    </figcaption>
-  </figure> -->
 
   <section class="post__article">
     <h3>Python</h3>
     <p>
       Great! With <b>Homebrew</b> all set up, let's use it to install <b>Python</b>.
-      We are going to need <b>v 3.0</b> or greater for <b>fonttools</b> to work.
+      We are going to need <b>v3.0</b> or greater for <b>fonttools</b> to work.
       Mac's do come pre-installed with Python, let's see which version it is
     </p>
 
@@ -125,12 +117,12 @@ permalink: /font-tools
     <p>
       Lastly, you might run the <b>python</b> command and not see <b>v3.7</b>.
       <a href="https://docs.brew.sh/Homebrew-and-Python">Homebrew has a page</a> on this issue.
-      Run <b>python3</b> to use <b>v3.7</b>.
+      Run <b>python3</b> to use <b>v3.7</b> when running commands in python.
     </p>
 
     <section class="post__code-highlight">
       <figure>
-        <code>python3</code>
+        <code>python3 run command here</code>
       </figure>
     </section>
 
@@ -164,7 +156,7 @@ permalink: /font-tools
 
     <section class="post__code-highlight">
       <figure>
-        <code>python</code>
+        <code>python3</code>
       </figure>
     </section>
 
@@ -218,6 +210,9 @@ permalink: /font-tools
     <p>
       We did it, now we can use the amazing <b>pyftsubset</b> command.
       I haven't found much documentation online for this tool, but the <b>--help</b> flag is super in-depth.
+      There are many options for <b>pyftsubset</b> and the commands get pretty long.
+      When looking at the list of options, it truly is astounding how much technical detail goes into creating web fonts.
+      There is a lot going on behind the scenes!
     </p>
 
     <section class="post__code-highlight">
@@ -226,10 +221,37 @@ permalink: /font-tools
       </figure>
     </section>
 
+    <section class="post__code-highlight">
+      <figure>
+        <code>pyftsubset "PublicSans.ttf" --output-file="PublicSans.woff2" --flavor=woff2 --layout-features="*" --no-hinting --desubroutinize --unicodes=U+0-10FFFF</code>
+      </figure>
+    </section>
+
+
     <p>
-      This article covers <a href="https://www.afasterweb.com/2018/03/09/subsetting-fonts-with-glyphhanger/">subsetting a webpage with glyphhanger</a>
-      and <a href="https://dev.to/benjaminblack/save-your-users-data-by-subsetting-web-fonts-5eo9">this one too</a>.
+      <b>--flavor=woff2</b> will create a <b>woff2</b> compressed file for our font.
     </p>
+    <p>
+      <b>--layout-features="*"</b> will include all <b>OpenType</b> features.
+      This is a whole other avenue I haven't explored.
+      The command below will list all features if you want to learn more.
+    </p>
+
+    <section class="post__code-highlight">
+      <figure>
+        <code>pyftsubset "PublicSans-Medium.ttf" --layout-features="?"</code>
+      </figure>
+    </section>
+
+    <p>
+      <b>--no-hinting</b> will not include hinting features in the <b>OpenType</b> file.
+      Hinting is the process of optimizing the font for <a href="https://www.typotheque.com/articles/hinting">maximum screen readability</a>.
+    </p>
+
+    <p>
+      <b>--unicodes=U+0-10FFFF</b> will include our range of glyphs we need for our website.
+    </p>
+
 
   </section>
 
@@ -241,6 +263,7 @@ permalink: /font-tools
       You can get it with <b>npm</b>
     </p>
 
+
     <section class="post__code-highlight">
       <figure>
         <code>npm install -g glyphhanger</code>
@@ -249,9 +272,22 @@ permalink: /font-tools
 
     <p>
       Some noticeable differences between <b>pyftsubset</b> and <b>glyphhanger</b> are: <b>glyphhanger</b> crawls websites, returns the unicode
-      characters and outputs a woff/woff2 subsetted web font, super powerful stuff! But <b>glyphhanger</b> is missing the <b>--layout-features</b> flag
-      and several others that make <b>pyftsubset</b> a precise tool for cutting out font features depending on your needs.
+      characters and outputs a woff/woff2 subsetted web font, super powerful stuff!
+    </p>
 
+    <p>
+      But <b>glyphhanger</b> is missing the <b>--layout-features</b> flag
+      and several others that make <b>pyftsubset</b> a precise tool for cutting out font features depending on your needs.
+      It really shines by returning a list of unicode characters on a site which you can use for subsetting to reduce web font sizes.
+    </p>
+
+    <section class="post__code-highlight">
+      <figure>
+        <code>glyphhanger http://example.com</code>
+      </figure>
+    </section>
+
+    <p>
       Combine these two together and you have an efficient subsetting and compression approach for delivering web fonts.
     </p>
 
