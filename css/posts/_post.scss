@@ -71,7 +71,7 @@
   h3 {
     padding: 4% 0 0 0;
     font-weight: 700;
-    font-style: italic;
+    // font-style: italic;
     font-size: calc(18px + (35 - 18) * ((100vw - 320px) / (2000 - 320)));
   }
 
@@ -79,10 +79,11 @@
   a {
     font-weight: 500;
     padding-bottom: .05rem;
+    border-bottom: 1px solid black;
 
     &:hover {
       text-decoration: none;
-      border-bottom: 1px solid black;
+      // border-bottom: 1px solid black;
 
     }
 
@@ -102,6 +103,10 @@
       max-width: 55ch;
       padding: 2% 0;
     }
+  }
+
+  b {
+    font-weight: 600;
   }
 
 }
