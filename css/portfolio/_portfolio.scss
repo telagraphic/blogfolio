@@ -21,19 +21,6 @@
     margin: 2% auto;
   }
 
-  h2 {
-    padding: 0 0 1rem 0;
-
-    font-weight: 100;
-    font-style: italic;
-    font-size: calc(21px + (45 - 21) * ((100vw - 320px) / (2000 - 320)));
-
-    @media (min-width: 650px) {
-      padding: 0 0 2rem 0;
-    }
-
-  }
-
 }
 
 
@@ -48,14 +35,6 @@
   @media (min-width: 850px) {
     padding: 0;
   }
-
-  // @media (min-width: 1400px) {
-  //   grid-template-columns: 1fr 1fr;
-  //   grid-column-gap: 2rem;
-  //   grid-template-rows: auto;
-  //
-  //   padding: 0;
-  // }
 
 }
 
