@@ -114,6 +114,28 @@ permalink: /web-fonts
     </figure>
 
     <section class="post__article">
+      <h3>
+        2 Stage Loading
+      </h3>
+
+      <p>
+        When a user lands on the homepage, there are only 3 fonts used:
+        <b>Bold</b> for the navigation links, <b>Extra Bold</b> for the heading, and <b>Extra-Light</b> for the short description.
+        The <b>CSS Font Loading API</b>, a javascript API for loading fonts will load the other remaining 15 fonts.
+        A browser usually allows a max of 6 network connects at a time. Using the <b>preload</b> hint will move the priority of
+        our first stage fonts to the top of the list.
+      </p>
+
+      <p>
+        Our <b>@font-face</b> declarations will initiate font downloads for the first stage.
+        This is paired with <b>resource hints</b> for the browser using preload for the 3 fonts on the homepage.
+        Preloading will help reduce <b>FOUT</b>, the flash of unstyled text.
+      </p>
+      <script src="https://gist.github.com/telagraphic/5b1a548329e54b4c8548fb3e9d95ce6c.js"></script>
+
+      <p>
+        Our remaining fonts will download but after the <b>First Meaningful Paint</b>.
+      </p>
 
 
     </section>
