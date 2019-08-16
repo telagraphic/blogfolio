@@ -47,7 +47,7 @@ permalink: /web-fonts
       Public Sans Weights and Styles
     </h5>
     </figcaption>
-    <img src="{{site.baseurl}}assets/web-fonts/public-weights-and-styles.png" alt="Public Sans Weights and Styles"><img>
+    <img src="{{site.baseurl}}assets/web-fonts/public-sans-weights.png" alt="Public Sans Weights and Styles"><img>
   </figure>
 
 
@@ -98,6 +98,7 @@ permalink: /web-fonts
 
       <p>
         All 18 files add up to <b>390 Kilobytes</b> file size.
+        The browser will determine which files to download, <b>WOFF2</b> or <b>WOFF</b>.
       </p>
 
     </section>
@@ -119,6 +120,12 @@ permalink: /web-fonts
       </h3>
 
       <p>
+        I'm using Zach Leats <a href="https://github.com/zachleat/web-font-loading-recipes#fout">Web Font Loading Recipes</a>
+        for the font loading code with some modifications.
+        <a href="https://gist.github.com/telagraphic/5b1a548329e54b4c8548fb3e9d95ce6c">Here is the code.</a>
+      </p>
+
+      <p>
         When a user lands on the homepage, there are only 3 fonts used:
         <b>Bold</b> for the navigation links, <b>Extra Bold</b> for the heading, and <b>Extra-Light</b> for the short description.
         The <b>CSS Font Loading API</b>, a javascript API for loading fonts will load the other remaining 15 fonts.
@@ -131,12 +138,45 @@ permalink: /web-fonts
         This is paired with <b>resource hints</b> for the browser using preload for the 3 fonts on the homepage.
         Preloading will help reduce <b>FOUT</b>, the flash of unstyled text.
       </p>
-      <script src="https://gist.github.com/telagraphic/5b1a548329e54b4c8548fb3e9d95ce6c.js"></script>
 
       <p>
-        Our remaining fonts will download but after the <b>First Meaningful Paint</b>.
+        You can see our preload fonts in the waterfall, they are loaded right after the <b>First Meaningful Paint</b>, a user centric
+        metric from the
+        <a href="https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics#first_meaningful_paint_and_hero_element_timing">Google Chrome team</a>.
       </p>
 
+    </section>
+
+    <figure class="post__figure">
+      <figcaption>
+        <h5>
+        Chrome Network Tab
+      </h5>
+      </figcaption>
+      <img src="{{site.baseurl}}assets/web-fonts/network-online.png" alt="Chrome Network Tab"></img>
+    </figure>
+
+    <figure class="post__figure">
+      <figcaption>
+        <h5>
+        Chrome Network Tab
+      </h5>
+      </figcaption>
+      <img src="{{site.baseurl}}assets/web-fonts/performance-online.png" alt="Chrome Performance Tab"></img>
+    </figure>
+
+    <section class="post__article">
+      <h3>
+        Using Our Fonts
+      </h3>
+
+      <p>
+        <b>Public Sans</b> is the family name and we use that as our font names in the <b>FontFace</b> declaration.
+        We then set the <b>weight</b> and <b>style</b> accordingly.
+      </p>
+
+      <script src="https://gist.github.com/telagraphic/b2fed86a65e275ca622e4f40b32845f7.js"></script>
 
     </section>
+
 </article>
