@@ -1,0 +1,166 @@
+<script>
+  (function() {
+    if ("fonts" in document) {
+
+      const thin = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-Thin.woff2) format('woff2'), url(assets/fonts/PublicSans-Thin.woff) format('woff')", {
+          weight: "100"
+        }
+      );
+
+      const thinItalic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-ThinItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ThinItalic.woff) format('woff')", {
+          weight: "100",
+          style: "italic"
+        }
+      );
+
+      const extraLightItalic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-ExtraLightItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLightItalic.woff) format('woff')", {
+          weight: "200",
+          style: "italic"
+        }
+      );
+
+      const extraLight = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')", {
+          weight: "200"
+        }
+      );
+
+      const light = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-Light.woff2) format('woff2'), url(assets/fonts/PublicSans-Light.woff) format('woff')", {
+          weight: "300"
+        }
+      );
+
+      const lightItalic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-LightItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-LightItalic.woff) format('woff')", {
+          weight: "300",
+          style: "italic"
+        }
+      );
+
+      const italic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-Italic.woff2) format('woff2'), url(assets/fonts/PublicSans-Italic.woff) format('woff')", {
+          style: "italic"
+        }
+
+      );
+
+      const medium = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-Medium.woff2) format('woff2'), url(assets/fonts/PublicSans-Medium.woff) format('woff')", {
+          weight: "400"
+        }
+      );
+
+      const mediumItalic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-MediumItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-MediumItalic.woff) format('woff')", {
+          weight: "400",
+          style: "italic"
+        }
+      );
+
+      const regular = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-Regular.woff2) format('woff2'), url(assets/fonts/PublicSans-Regular.woff) format('woff')", {
+          weight: "500"
+        }
+      );
+
+      const bold = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')", {
+          weight: "600"
+        }
+      );
+
+      const boldItalic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-BoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-BoldItalic.woff) format('woff')", {
+          weight: "600",
+          style: "italic"
+        }
+      );
+
+      const semiBold = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-SemiBold.woff2) format('woff2'), url(assets/fonts/PublicSans-SemiBold.woff) format('woff')", {
+          weight: "700"
+        }
+      );
+
+      const semiBoldItalic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-SemiBoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-SemiBoldItalic.woff) format('woff')", {
+          weight: "700",
+          style: "italic"
+        }
+      );
+
+      const extraBold = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')", {
+          weight: "800"
+        }
+      );
+
+      const extraBoldItalic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-ExtraBoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBoldItalic.woff) format('woff')", {
+          weight: "800",
+          style: "italic"
+        }
+      );
+
+      const black = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-Black.woff2) format('woff2'), url(assets/fonts/PublicSans-Black.woff) format('woff')", {
+          weight: "900"
+        }
+      );
+
+      const blackItalic = new FontFace(
+        "Public Sans",
+        "url(assets/fonts/PublicSans-BlackItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-BlackItalic.woff) format('woff')", {
+          weight: "900",
+          style: "italic"
+        }
+      );
+
+      Promise.all([
+        thin.load(),
+        thinItalic.load(),
+        extraLightItalic.load(),
+        extraLight.load(),
+        light.load(),
+        lightItalic.load(),
+        italic.load(),
+        medium.load(),
+        mediumItalic.load(),
+        regular.load(),
+        bold.load(),
+        boldItalic.load(),
+        semiBold.load(),
+        semiBoldItalic.load(),
+        extraBold.load(),
+        extraBoldItalic.load(),
+        black.load(),
+        blackItalic.load()
+      ]).then(function(loadedFonts) {
+        loadedFonts.forEach(function(font) {
+          document.fonts.add(font);
+        });
+      });
+    }
+  })();
+</script>
