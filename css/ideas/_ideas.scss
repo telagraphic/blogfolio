@@ -1,4 +1,8 @@
-.posts {
+
+
+
+
+.ideas {
 
   width: 100%;
   margin: 5% auto;
@@ -10,7 +14,23 @@
 
 }
 
-.posts__header {
+.ideas__description {
+
+  width: 89%;
+  margin: 1rem auto;
+
+  font-style: italic;
+  font-weight: 100;
+  font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
+  line-height: calc(20px + (38 - 20) * ((100vw - 320px) / (2000 - 320)));
+
+
+  @media (min-width: 850px) {
+    width: 100%;
+  }
+}
+
+.ideas__header {
 
   width: 89%;
   margin: 0 auto;
@@ -34,7 +54,7 @@
   }
 }
 
-.posts__link {
+.ideas__link {
 
   display: inline-block;
   height: 100%;
@@ -63,7 +83,7 @@
   }
 }
 
-.posts__link-content {
+.ideas__link-content {
   padding: 1rem 1rem;
 
   @media (min-width: 650px) {
