@@ -15,9 +15,12 @@
   }
 
   li {
-    padding-right: 5%;
+    padding-right: 3%;
     font-size: calc(16px + (21 - 16) * ((100vw - 320px) / (2000 - 320)));
 
+    @media (min-width: 850px) {
+      padding-right: 5%;
+    }
   }
 
   a {
