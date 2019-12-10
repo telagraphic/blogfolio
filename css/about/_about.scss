@@ -48,6 +48,11 @@
     font-weight: 300;
     font-style: italic;
     font-size: calc(21px + (55 - 21) * ((100vw - 320px) / (2000 - 320)));
+
+
+    p {
+      word-spacing: -.35rem;
+    }
   }
 
   h3 {
@@ -56,11 +61,9 @@
     font-size: calc(21px + (55 - 21) * ((100vw - 320px) / (2000 - 320)));
   }
 
-  p {
-
-  }
-
   .links-desktop {
+    display: flex;
+
     font-weight: 100;
     padding: 2% 0;
 
@@ -78,6 +81,16 @@
       &:hover {
         font-size: calc(18px + (30 - 18) * ((100vw - 320px) / (2000 - 320)));
       }
+    }
+
+    img {
+      width: 2rem;
+      height: auto;
+
+      @media (min-width: 650px) {
+        width: 2.5rem;
+      }
+
     }
   }
 }
@@ -146,8 +159,8 @@
       margin: 0;
       padding: 0;
 
-      font-weight: 100;
-      font-style: italic;
+      font-weight: 400;
+      font-style: normal;
     }
   }
 }
