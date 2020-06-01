@@ -80,10 +80,15 @@
 
 
   h3 {
-    padding: 4% 0 0 0;
+    padding: 4% 0 3% 0;
     font-weight: 700;
     // font-style: italic;
     font-size: calc(18px + (35 - 18) * ((100vw - 320px) / (2000 - 320)));
+  }
+
+  h4 {
+    padding: 4% 0 2% 0;
+    font-weight: 700;
   }
 
 
@@ -94,8 +99,6 @@
 
     &:hover {
       text-decoration: none;
-      // border-bottom: 1px solid black;
-
     }
 
     &:focus {
@@ -127,6 +130,43 @@
 
   b {
     font-weight: 600;
+  }
+
+  q {
+    display: block;
+    height: 5rem;
+
+    background-color: rgb(221, 221, 221);
+    border-left: 3px solid rgb(139, 139, 139);
+
+    font-weight: 500;
+    padding: 0 0 0 5%;
+
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 0;
+    padding: 0 0 0 2%;
+  }
+
+  blockquote:before {
+    color: #ccc;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  blockquote p {
+    display: inline;
+    font-weight: 500;
   }
 
 }
