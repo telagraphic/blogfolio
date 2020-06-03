@@ -7,7 +7,7 @@ projects.forEach(project => {
 
     gsap
       .timeline()
-      .set(description, {opacity: 0})
+      // .set(description, {opacity: 0})
       .to(description, {opacity:1, duration: .5})
       .to(description.children[0], {opacity:1, duration: .25}, '<');
   })
