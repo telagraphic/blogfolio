@@ -117,8 +117,8 @@
     }
 
     font-weight: 100;
-    font-size: calc(16px + (26 - 16) * ((100vw - 320px) / (2000 - 320)));
-    line-height: calc(20px + (38 - 20) * ((100vw - 320px) / (2000 - 320)));
+    font-size: calc(18px + (26 - 18) * ((100vw - 320px) / (2000 - 320)));
+    line-height: calc(22px + (38 - 22) * ((100vw - 320px) / (2000 - 320)));
 
 
   }
@@ -128,7 +128,7 @@
 
     font-weight: 700;
     font-style: italic;
-    font-size: calc(18px + (35 - 18) * ((100vw - 320px) / (2000 - 320)));
+    font-size: calc(20px + (35 - 20) * ((100vw - 320px) / (2000 - 320)));
   }
 
   h5 {
