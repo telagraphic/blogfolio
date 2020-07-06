@@ -1,3 +1,21 @@
+// <section class="work__project">
+//   <a class="portfolio" href="http://www.flexulator.com/">
+//     <header class="portfolio__header">
+//       <h3>Flexulator</h3>
+//     </header>
+//     <section class="portfolio__body">
+//       <section class="portfolio__picture">
+//         <img src="{{site.baseurl}}assets/img/portfolio/flexulator.png" alt="Flexulator"></img>
+//       </section>
+//       <section class="portfolio__description">
+//         <p>
+//           Flexbox space distribution algorithm visualizer
+//         </p>
+//       </section>
+//     </section>
+//   </a>
+// </section>
+
 const projects = document.querySelectorAll('.work__project');
 
 projects.forEach(project => {
@@ -7,7 +25,7 @@ projects.forEach(project => {
 
     gsap
       .timeline()
-      .to(description, {opacity:1, duration: .5})
+      .to(description, {opacity:.9, duration: .5})
       .to(description.children[0], {opacity:1, duration: .25}, '<');
   })
 })
@@ -19,7 +37,7 @@ projects.forEach(project => {
 
     gsap
       .timeline()
-      .to(description, {opacity:0, duration: .25, ease: 'power2.out'})
+      .to(description, {opacity:0, duration: .25})
       .to(description.children[0], {opacity:0, duration: .25}, '>');
   })
 })

@@ -16,26 +16,8 @@ permalink: /fakenews-webcams
   </section>
 
   <section class="post__article">
-    <p>
-      Flexbox's spacing algorithm isn't intuitive when you are first learning,
-      but several CSS experts have written <a href="#">great articles</a> explaining the math
-      behind how growing and shrinking work.
-    </p>
+    <h3>Sample Code</h3>
 
-    <p>
-      It inspired me to build a tool I call the Flexulator for seeing
-      how this formula works on flex items.
-      <a href="#">Flexulator</a> is a tool in progress, but I have completed most of the javascript code that displays
-      the underlying flex math.
-    </p>
-
-
-    <p>
-      I have plans to fix up the UI, fix performance problems like grouping read/writes to prevent layout thrashing,
-      and refactor the 400 line javascript file.
-    </p>
-
-    <h3>In Short</h3>
     <p>
       In short, The Uncertainty Machine is a web-based tool to measure
       uncertainty for many different applications , some being for the age of a
@@ -57,6 +39,39 @@ permalink: /fakenews-webcams
       <a href="#">UXMovement</a> for insightful UX best practices, <a href="#">WTFForms</a> for a modern
       approach to styling form inputs, and <a href="#">CSS Tricks Grid Guide</a>.
     </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-css">
+        body {
+          font: 100% Helvetica, sans-serif;
+          color: #333;
+        }
+
+        .box {
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          -ms-border-radius: 10px;
+          border-radius: 10px;
+        }
+      </code>
+    </pre>
+
+    <pre>
+      <code class="language-js">
+        const soundboardAudio = {
+          construction: {
+           sound: new Howl({
+             src: ['./sounds/gentrification-construction.webm','./sounds/gentrification-construction.mp3'],
+             volume: 0,
+             html5: true,
+             loop: true
+           }),
+           details: "gentrification construction"
+         },
+      </code>
+    </pre>
   </section>
 
   <figure class="post__figure">

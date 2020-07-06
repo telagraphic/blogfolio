@@ -48,6 +48,25 @@
   }
 }
 
+.post__code-snippet {
+
+  max-width: 100%;
+  margin: 1% auto;
+
+  font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
+  line-height: calc(20px + (38 - 20) * ((100vw - 320px) / (2000 - 320)));
+
+  @media (min-width: 850px) {
+    max-width: 65%;
+    margin: 1% auto;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 
 .post__article {
 
