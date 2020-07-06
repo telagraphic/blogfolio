@@ -25,7 +25,7 @@ projects.forEach(project => {
     gsap
       .timeline()
       .to(description, {opacity:.9, duration: .25})
-      .to(description.children[0], {opacity:1, duration: .25}, '>');
+      .to(description.children[0], {opacity:1, duration: .25}, '<');
   })
 })
 
@@ -36,7 +36,7 @@ projects.forEach(project => {
     gsap
       .timeline()
       .to(description, {opacity:0, duration: .25})
-      .to(description.children[0], {opacity:0, duration: .25}, '>');
+      .to(description.children[0], {opacity:0, duration: .25}, '<');
   })
 })
 
