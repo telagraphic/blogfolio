@@ -1,0 +1,175 @@
+<!doctype html><html class="no-js" lang="en" dir="ltr"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content=""><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"><title>Nick Lyons Blogfolio</title><link rel="canonical" href="https://www.telagraphic.com"><meta name="description" content="Front end learnings on UI/UX, Code and Design"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="stylesheet" href="/css/main.css"><link rel="preload" href="/assets/fonts/PublicSans-ThinItalic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/PublicSans-Bold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/PublicSans-ExtraLight.woff2" as="font" type="font/woff2" crossorigin><style>
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')";
+      font-display: swap;
+      font-weight: 200;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 800;
+    }
+  00040font-face{font-family:"Public Sans";src:"url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')";font-display:swap;font-weight:200}
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')";
+      font-display: swap;
+      font-weight: 200;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 800;
+    }
+  00040font-face{font-family:"Public Sans";src:"url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')";font-display:swap;font-weight:600}
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')";
+      font-display: swap;
+      font-weight: 200;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 800;
+    }
+  00040font-face{font-family:"Public Sans";src:"url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')";font-display:swap;font-weight:800}</style></head><body> <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p><![endif]--><nav class="navigation"><ul><li> <a href="/"> PORTFOLIO </a></li><li> <a href="/posts"> POSTS </a></li><li> <a href="/about"> ABOUT </a></li></ul> </nav> <main class="main-article" data-barba="wrapper"> <article class="barba-container" data-barba="container"> <article class="post"><section class="post__header"><h2>Howler Soundboard</h2> <time>7/2020</time> </section><section class="post__banner"> <img src="/assets/img/portfolio/antiambient.png" alt="Anti Ambient Soundboard"></img> </section><section class="post__article"><h3>About</h3><p> Thanks to <a href="https://github.com/goldfire/howler.js/">Howler.js</a>, audio on the web is a relative breeze. In this post, I'll show you how to setup <b>howler.js</b>, create a simple soundboard and add some basic howler functionality to play, stop and adjust volume for a group of audio files.</p><p> <a href="https://github.com/goldfire/howler.js/">Howler.js</a> has tons of great features and capabilities. I'm only scratching the surface. The code below is based on a soundboard project I made — <a href="https://antiambient.com/">Anti-Ambient</a>. Unfortunately, very fitting for the pandemic times we live in.</p><p> As for the audio files, I used Adobe Audition to create my loops. Exported them as <b>.wav</b> files, then converted them to <b>.mp3</b>, then used <a href="https://www.freeconvert.com/mp3-to-webm">freeconvert.com</a> to generate webm files. I aimed to make each file under 2MB. Check your network performance monitor in your devtools to check for bottlenecks.</p> </section><section class="post__article"><h3>One Sound</h3><p> Reading through the <a href="https://github.com/goldfire/howler.js/#documentation">docs</a> recommends using <b>webm</b> for covering most browsers and <b>mp3</b> for Internet Explorer fallback suport. Following the docs, we can create a new <b>Howl</b> object, provide our sources and set <b>html5</b> to <b>true</b> for large audio files to play before being completely downloaded. This helps if the user has clicked on the play button before the file has finished, it will still play! Since I'll be looping these files, I've set that to <b>true</b>.</p> </section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+          new Howl({
+             src: ['./sounds/gentrification-construction.webm','./sounds/gentrification-construction.mp3'],
+             volume: 0,
+             html5: true,
+             loop: true
+          })
+      </code>
+</pre></section><section class="post__article"><h3>Multiple Sounds</h3><p> Howler has a global object <b>Howler</b> that controls all sounds. A <b>Howl</b> as defined above falls under this parent object. Each <b>Howl</b> has a whole list of methods to be called on just that sound. To see how we can get an array of sounds for our soundboard, let's use an object to store them. The paths to the audio files are relative to the javascript file we are calling them from. Each sound is stored in an object with a descriptive name which we will connect to our markup.</p> </section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        const soundboardAudio = {
+          construction: {
+           sound: new Howl({
+             src: ['./sounds/gentrification-construction.webm','./sounds/gentrification-construction.mp3'],
+             volume: 0,
+             html5: true,
+             loop: true
+           }),
+           details: "gentrification construction"
+         },
+         protest: {
+           sound: new Howl({
+            src: ['./sounds/standing-rock-protest.webm','./sounds/standing-rock-protest.mp3'],
+            volume: 0,
+            html5: true,
+            loop: true
+          }),
+          details: "standing rock protest"
+          },
+          sweatshop: {
+           sound: new Howl({
+             src: ['./sounds/sweat-shop.webm','./sounds/sweat-shop.mp3'],
+             volume: 0,
+             html5: true,
+             loop: true
+           }),
+           details: "sewing sweat shop"
+         },
+       };
+      </code>
+</pre></section><section class="post__article"><h3>The Markup</h3><p>Each button will contain a <b>data-sound="name-here"</b> attribute that maps to the sounds object above. With some javascript, we'll get the attribute, find the matching sound in our javascript object and play, stop and adjust the volume. Here is the markup and styles for our 3 icons.</p><p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="telagraphic" data-slug-hash="jOWzxLz" style="height:265px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border:2px solid;margin:1em 0;padding:1em" data-pen-title="howler-soundboard"> <span>See the Pen <a href="https://codepen.io/telagraphic/pen/jOWzxLz"> howler-soundboard</a> by Nick (<a href="https://codepen.io/telagraphic">@telagraphic</a>) on <a href="https://codepen.io">CodePen</a>.</span></p> <script async src="https://static.codepen.io/assets/embed/ei.js"></script></section><section class="post__article"><h3>Playing and Stopping</h3><p> Since this is a simple soundboard, we just need to play and stop a specific sound when the user clicks the button. First, I select all the <b>.sound-box</b> elements that will act as a play/stop button and add an event listener that calls the <b>toggleButtonSounds</b>.</p> </section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        function setupSoundButtons() {
+          const allButtons = selectAll('.sound-box');
+
+          allButtons.forEach(button => {
+            button.addEventListener('click', toggleButtonSounds);
+          });
+        }
+      </code>
+</pre></section><section class="post__article"><p> The <b>toggleButtonSounds</b> has got several things going on, let's take a look at each part. First, it is important to understand the difference between <b>event.target</b> and <b>event.currentTarget</b>. The element that 'fires' the click event is the <b>target</b>, it is the element that was clicked and bubbles up thru the DOM to where we are listening on the <b>currentTarget</b>, the element that we attached the event listener to.</p></section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        function toggleButtonSounds(event) {
+          let buttonSound = event.currentTarget.dataset.sound;
+          let currentVolume = event.currentTarget.querySelector('.sound-box__volume-slider').dataset.volume;
+
+          if (event.target.matches('.sound-box__volume') || event.target.matches('.sound-box__volume-slider')) {
+            return;
+          }
+
+          if (soundboardAudio[buttonSound].sound.playing()) {
+            soundboardAudio[buttonSound].sound.fade(currentVolume, 0, fadeTimeout);
+
+            setTimeout(function() {
+              soundboardAudio[buttonSound].sound.stop();
+            }, fadeTimeout);
+
+          } else {
+            soundboardAudio[buttonSound].sound.play();
+            soundboardAudio[buttonSound].sound.fade(0, currentVolume, 1000);
+          }
+        }
+      </code>
+</pre></section><section class="post__article"><p> The first <b>if</b> statement checks to see if the <b>target</b> is a a volume element, if so, we return and do not proceed. If the user is clicking the volume slider, I don't the rest of the code to run since it controls the play/stop functionality. We'll see the volume function in the next part.</p><p> The second if is where we play/stop the actual sound. The first line in the function grabs the data attribute from the markup and we use that to access the sound in our audio object named <b>soundboardAudio</b>. The <b>playing()</b> method returns a boolean of true if the sound is playing or false if it is not. If the sound is playing, the <b>fade()</b> function will grab our current volume and fade to 0. I then call <b>stop()</b> within a setTimeout to make sure the fade actually audible fades before calling the <b>stop()</b> method. If I didn't use a setTimeout and called <b>stop()</b> right after the <b>fade()</b>, the fade would be cut short.</p><p> The else statement will run if the sound is not playing. We simple <b>play()</b> the sound and <b>fade()</b> it up.</p> </section><section class="post__article"><h3>Volume Control</h3><p> Each sound has it's own volume slider, the function below grabs another data attribute on the range input to change the volume for that specific sound by mapping it to our <b>soundboardAudio</b> object. The last line then sets a volume data attribute so that when the button is stopped and then played again, it will use the previous volume.</p></section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        function setupVolumeSliders() {
+          const volumeSliders = selectAll('.sound-box__volume-slider');
+
+          volumeSliders.forEach(slider => {
+            slider.addEventListener('click', event => {
+              let sliderSound = event.target.dataset.sound;
+              let currentVolume = event.target.value;
+              soundboardAudio[sliderSound].sound.fade(event.target.dataset.volume, currentVolume, 100);
+              event.target.dataset.volume = event.target.value;
+            })
+          })
+        }
+      </code>
+</pre></section><section class="post__article"><h3>Stop It All</h3><p> Let's say we are playing all the sounds and it's it getting to be too much, let's make them all stop. This is easy. We simply called <b>Howler.stop()</b> to stop any sounds being actively played. The rest of the function is just re-setting UI styles on elements back to their normal condition.</p></section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        function setupStopButton() {
+          const stopButton = select('.header__stop-button');
+          stopButton.addEventListener('click', function(event) {
+            Howler.stop();
+
+            let soundButtons = selectAll('.sound-box');
+            soundButtons.forEach(button => {
+              button.querySelector('.sound-box__header').style.opacity = 0;
+              button.querySelector('.sound-box__icon').style.opacity = 1;
+              button.querySelector('.sound-box__volume').style.opacity = 0;
+              button.querySelector('.sound-box__volume-slider').dataset.volume = ".5";
+
+              setTimeout(function() {
+                button.querySelector('.sound-box__volume-slider').value = .5;
+              }, 1500);
+
+            });
+          });
+        };
+      </code>
+</pre></section><section class="post__article"><p> There you have it, now you can make your own soundboard. To see the full demo of the code above, check out <a href="https://antiambient.com/">Anti-Ambient</a>.</p> </section></article> </article> </main> <noscript> You need to enable JavaScript to run this app. </noscript> <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script></body> <script>!function(){if("fonts"in document){const f=new FontFace("Public Sans","url(assets/fonts/PublicSans-Thin.woff2) format('woff2'), url(assets/fonts/PublicSans-Thin.woff) format('woff')",{weight:"100"}),s=new FontFace("Public Sans","url(assets/fonts/PublicSans-ThinItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ThinItalic.woff) format('woff')",{weight:"100",style:"italic"}),a=new FontFace("Public Sans","url(assets/fonts/PublicSans-ExtraLightItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLightItalic.woff) format('woff')",{weight:"200",style:"italic"}),t=new FontFace("Public Sans","url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')",{weight:"200"}),o=new FontFace("Public Sans","url(assets/fonts/PublicSans-Light.woff2) format('woff2'), url(assets/fonts/PublicSans-Light.woff) format('woff')",{weight:"300"}),l=new FontFace("Public Sans","url(assets/fonts/PublicSans-LightItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-LightItalic.woff) format('woff')",{weight:"300",style:"italic"}),n=new FontFace("Public Sans","url(assets/fonts/PublicSans-Italic.woff2) format('woff2'), url(assets/fonts/PublicSans-Italic.woff) format('woff')",{style:"italic"}),i=new FontFace("Public Sans","url(assets/fonts/PublicSans-Medium.woff2) format('woff2'), url(assets/fonts/PublicSans-Medium.woff) format('woff')",{weight:"400"}),e=new FontFace("Public Sans","url(assets/fonts/PublicSans-MediumItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-MediumItalic.woff) format('woff')",{weight:"400",style:"italic"}),c=new FontFace("Public Sans","url(assets/fonts/PublicSans-Regular.woff2) format('woff2'), url(assets/fonts/PublicSans-Regular.woff) format('woff')",{weight:"500"}),w=new FontFace("Public Sans","url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')",{weight:"600"}),u=new FontFace("Public Sans","url(assets/fonts/PublicSans-BoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-BoldItalic.woff) format('woff')",{weight:"600",style:"italic"}),r=new FontFace("Public Sans","url(assets/fonts/PublicSans-SemiBold.woff2) format('woff2'), url(assets/fonts/PublicSans-SemiBold.woff) format('woff')",{weight:"700"}),S=new FontFace("Public Sans","url(assets/fonts/PublicSans-SemiBoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-SemiBoldItalic.woff) format('woff')",{weight:"700",style:"italic"}),P=new FontFace("Public Sans","url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')",{weight:"800"}),b=new FontFace("Public Sans","url(assets/fonts/PublicSans-ExtraBoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBoldItalic.woff) format('woff')",{weight:"800",style:"italic"}),m=new FontFace("Public Sans","url(assets/fonts/PublicSans-Black.woff2) format('woff2'), url(assets/fonts/PublicSans-Black.woff) format('woff')",{weight:"900"}),d=new FontFace("Public Sans","url(assets/fonts/PublicSans-BlackItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-BlackItalic.woff) format('woff')",{weight:"900",style:"italic"});Promise.all([f.load(),s.load(),a.load(),t.load(),o.load(),l.load(),n.load(),i.load(),e.load(),c.load(),w.load(),u.load(),r.load(),S.load(),P.load(),b.load(),m.load(),d.load()]).then(function(f){f.forEach(function(f){document.fonts.add(f)})})}}()</script><script src="https://cdn.usefathom.com/script.js" site="ESYDHBMT" spa="auto" defer></script><script src="https://unpkg.com/@barba/core"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js"></script><script src="js/blog.js"></script></html>
