@@ -1,0 +1,292 @@
+---
+title: NPM Build Scripts
+layout: page
+permalink: /npm-build-scripts
+---
+
+<article class="post">
+
+  <section class="post__header">
+    <h2>NPM Build Scripts for Static Sites</h2>
+    <time>8/2020</time>
+  </section>
+
+  <section class="post__banner">
+    <img src="{{site.baseurl}}assets/img/posts/npm-logo.png" alt="Express & NPM Build Scripts"></img>
+  </section>
+
+  <section class="post__article">
+    <p>
+      This post will show you how to use npm packages for running tasks and bundling your static site.
+      This is not an exhaustive guide but enough to get you started on customizing your own configurations.
+      I use this setup for deploying to heroku or netlify all the time for development.
+    </p>
+
+    <p>
+      You could definitely use <a href="https://webpack.js.org/">webpack</a>, <a href="https://parceljs.org/getting_started.html">parcel</a>,
+      <a href="https://gruntjs.com/">grunt</a> or <a href="https://gulpjs.com/">gulp</a>. Webpack is the go to industry standard for more complex projects,
+      see this <a href="https://frontendmasters.com/courses/webpack-fundamentals/">course from the maintainer for what is capable</a>.
+      Currently the sites I'm working on do not require such meticulous build tools, so NPM scripts are perfect. Plus, you get
+      to build something that best fits your needs and workflow style. I don't have time to read through the docs when I want to get started
+      on a new project quick and fast. I tried using <b>parcel</b> for an express node app and I spent over an hour trying to get it
+      setup. It didn't do what I needed and I could have spent more time learning about how to get it just right.
+      But <b>NPM</b> has many great tools that can easily be setup for my needs.
+    </p>
+
+    <h3>Runners and Bundlers</h3>
+
+    <p>
+      <b>Task runners</b> automate the tedious process of watching for files changes and reloading the browser when a change occurs.
+      <b>Bundlers</b> prepare your files for deployment doing things like compressing and minifying your code.
+    </p>
+
+    <p>
+      They save you clicking and switching, streamline the devlopment process, and restart processes automatically.
+      which reduces your time spent . I strongly urge you to look into your tooling, I'll show you the basics for a static site first.
+      Then how to use them for a express app that uses <a href="https://www.npmjs.com/package/express-handlebars">express-handlebars</a>
+      for templating along with a <b>/server</b> and <b>/public</b> directory for front and back end code.
+    </p>
+  </section>
+
+  <section class="post__article">
+    <h3>Static Site</h3>
+
+    <p>
+      First, we will build our static site file structure with a bash script.
+      <b>cd</b> into a fresh new directory and then run the script below.
+    </p>
+
+    <p>
+      <b>npm init -y</b> will create a default <b>package.json</b> file for the project and <b>npm i -D</b> will install our developer dependencies.
+    </p>
+
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-bash">
+        #!/bin/bash
+        mkdir -p {scss,css,views,js,img,fonts,design}
+        cd scss && mkdir {base,config,objects,globals,components,utilities,pages}
+        touch styles.scss
+        cd base && touch _defaults.scss _normalize.scss _typography.scss && cd ..
+        cd components && touch _component.scss && cd ..
+        cd config && touch _mixins.scss _functions.scss _variables.scss && cd ..
+        cd globals && touch _global.scss && cd ..
+        cd objects && touch _object.scss && cd ..
+        cd pages && touch _page.scss && cd ..
+        cd utilities && touch _utility.scss && cd ..
+        cd ..
+
+        cd js && touch scripts.js && cd ..
+        cd views && touch index.html && cd ..
+
+        npm init -y
+        npm i -D node-sass autoprefixer postcss-cli onchange eslint uglify-js imagemin-cli browser-sync npm-run-all
+
+        git init
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      With <a href="https://www.npmjs.com/package/node-sass">node-sass</a> we can compile SASS files (<b>.scss</b>) files into CSS files.
+      <a href="https://www.npmjs.com/package/onchange">onchange</a> will watch files and directories for a file change initiated by saving a file.
+      Together, we can compile our SASS files into one main <b>styles.css</b> file and re-compile it every time we make a change to any <b>.scss</b> file.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        {
+          "name": "new-site",
+          "version": "1.0.0",
+          "description": "",
+          "main": "index.js",
+          "scripts": {
+            "dev:scss": "node-sass --output-style nested -o css scss/styles.scss",
+            "dev:watch": "onchange 'scss' -- npm run dev:scss",
+            "dev:serve": "browser-sync start --server --ss 'views' --files 'scss/**/*.scss, views/*.html, js/*.js'",
+            "server": "run-p dev:watch dev:serve"
+          },
+          "keywords": [],
+          "author": "",
+          "license": "ISC",
+          "devDependencies": {
+            "autoprefixer": "^9.8.4",
+            "browser-sync": "^2.26.7",
+            "eslint": "^7.4.0",
+            "imagemin-cli": "^6.0.0",
+            "node-sass": "^4.14.1",
+            "npm-run-all": "^4.1.5",
+            "onchange": "^7.0.2",
+            "postcss-cli": "^7.1.1",
+            "uglify-js": "^3.10.0"
+          }
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <h3>SASS</h3>
+
+    <p>
+      The <b>dev:scss</b> command will watch our <b>scss/styles.scss</b> file which will contain all our imports of the SASS partials.
+      SASS partials have an underscore in the first position like <b>_mixins.scss</b>. This will output our <b>scss/styles.scss</b> file
+      into the <b>css</b> directory as <b>styles.css</b>.
+    </p>
+
+    <p>
+      The next line, <b>dev:watch</b> runs the <b>onchange</b> package to watch the <b>/scss</b> directory and run <b>npm run dev:scss</b>
+      any time we make a change in a file within the <b>/scss</b> directory. So, anytime we make a change to a SASS file, we
+      recompile the <b>scss/styles.scss</b> and create a fresh new <b>css/styles.css</b> which is linked to the <b>views/index.html</b> file.
+    </p>
+
+    <h4>Live Reload</h4>
+
+    <p>
+      <a href="https://www.npmjs.com/package/browser-sync">browser-sync</a> will reload our browser anytime we make file change.
+      Here are the <a href="https://www.browsersync.io/docs/options">docs for all the settings</a> and the
+      <a href="https://www.browsersync.io/docs/command-line">command line usage</a> which we will be using.
+      It takes several options, let's take a closer look at the <b>dev:serve</b> line.
+    </p>
+
+    <p>
+      <b>--server</b> will start local server for our project, <b>--ss</b> means 'serve static' and tells our server where to
+      server our static files, in this case it is the <b>/views</b> directory. The <b>--files</b> flag will watch files and directories that
+      we provide it to reload when changed. We can use the glob command (<b>*</b>) to watch all our different file types.
+    </p>
+
+    <p>
+      Finally, we put it all together with the <b>server</b> command by using the <a href="https://www.npmjs.com/package/run-p">run-p</a>
+      which runs our two commands at the same time in parallel. This is preferable to using <b>&</b> between the two commands because <b>run-p</b>
+      ensures that it will work on all platforms and properly stops all processes, see this
+      <a href="https://stackoverflow.com/questions/30950032/how-can-i-run-multiple-npm-scripts-in-parallel">post for more details</a>.
+    </p>
+
+    <p>
+      Then run it on the command line:
+    </p>
+
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        npm run server
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <h3>Bundle</h3>
+
+    <p>
+      Next, we'll bundle everything up and save it to a <b>dist</b> folder for deployment.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+          "scripts": {
+            "dev:scss": "node-sass --output-style nested -o css scss/styles.scss",
+            "dev:watch": "onchange 'scss' -- npm run dev:scss",
+            "dev:serve": "browser-sync start --server --ss 'views' --files 'scss/**/*.scss, views/*.html, js/*.js'",
+            "server": "run-p dev:watch dev:serve",
+            "build:dist": "mkdir -p dist/{css,js,img,fonts}",
+            "build:html": "html-minifier --input-dir ./views --output-dir ./dist --collapse-whitespace",
+            "build:css": "postcss -u autoprefixer -o dist/css/styles.css css/*.css",
+            "build:js-lint": "eslint js",
+            "build:js-uglify": "mkdir -p dist/js && uglifyjs js/*.js -m -o dist/js/scripts.js && uglifyjs js/*.js -m -c -o dist/js/scripts.min.js",
+            "build:img": "imagemin src/images dist/images -p",
+            "build:fonts": "cp fonts/* dist/fonts",
+            "build": "run-s build:*"
+          }
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <h3>CSS</h3>
+
+    <p>
+      <b>build:dist</b> will forcefully remove <b>/dist</b> if it exists and create a new one using the curly braces to create children folders within it.
+      The <b>-p</b> flag will not throw an error if the directory already exists.
+    </p>
+
+    <p>
+      <b>build:html</b> will minify our html, can't forget about our plain old HTML! <a href="https://www.npmjs.com/package/html-minifier">html-minifier</a>
+      will do the job.
+    </p>
+
+    <p>
+      <b>build:css</b> uses <a href="https://www.npmjs.com/package/postcss-cli">postcss-cli</a> to run our css file through
+      <a href="https://www.npmjs.com/package/autoprefixer">autoprefixer</a>. <b>Autoprefixer</b> will add vendor prefixes such as <b>-moz</b>
+      and <b>-webkit</b> to our css rules ensure they work properly for most browsers. Very helpful tool for front end developers!
+
+      <b>PostCSS</b> is tool that uses javascript to do a whole bunch of useful
+      cool things with CSS. Read through the <a href="https://github.com/postcss/postcss#usage">github repo</a> to see the many things it is capable of.
+    </p>
+
+    <h3>Javascript</h3>
+
+    <p>
+      <b>build:js:lint</b> will check our code any syntax errors and alert us to make a fix. There are many options to incorporate and
+      you will need to run <b>eslint --init</b> to generate a config file for setting up linting rules.
+      <a href="https://github.com/eslint/eslint">Read more here</a>.
+    </p>
+
+    <p>
+      <b>build:js:uglify</b> will minify and combine our javascript files using the
+      <a href="https://github.com/mishoo/UglifyJS">uglify-js</a> package.
+    </p>
+
+    <p>
+      It will <b>mangle</b> which means it will reduce variable names to a 1 or 2 letter replacement. <b>Minification</b> will reduce
+      the file size by removing white-space, comments and other non-essential characters and is still valid code, just harder to read.
+      <b>Compressing</b> will further reduce the file size with more optimizations.
+    </p>
+
+    <h3>Images</h3>
+
+    <p>
+      <b>build:img</b> will compress the images with <a href="https://github.com/imagemin/imagemin-cli">imagemin</a>.
+      Read up on image compression, it really makes a difference.
+    </p>
+
+    <h3>Fonts</h3>
+
+    <p>
+      <b>build:fonts</b> will copy our optimized <b>.woff</b> and <b>.woff2</b> font files.
+      Check out <a href="https://www.zachleat.com/">web font guru Zach Leatherman</a> on font optimizations and loading
+      or my posts on <a href="{{site.baseurl}}font-tools">font tools</a> and <a href="{{site.baseurl}}web-fonts">web fonts</a>
+      both heavily using Zach's advice.
+    </p>
+
+    <h3>Build It</h3>
+
+    <p>
+      <b>build</b> will <b>sequentially</b> run each of the npm scripts that contain the <b>build</b> suffix. We are done! Hopefully no errors.
+    </p>
+
+    <p>
+      This is my setup and you can easily make changes that fit your developer workflow. I've based this on several great blog posts from
+
+      <a href="https://css-tricks.com/why-npm-scripts/">CSS Tricks by Damon Bauer</a> and
+      <a href="https://nervewax.com/npm-scripts-compiler/">this one</a>. <a href="https://css-irl.info/a-modern-front-end-workflow-part-1/">CSS In Real Life</a>
+      is super great and <a href="https://github.com/gregrickaby/npm-scripts-boilerplate/blob/master/package.json">here is another repo</a> for some more ideas.
+
+    </p>
+
+    <p>
+      If the above code suits your needs, get the full
+      <a href="https://github.com/telagraphic/static-site-starter">repo here to get started</a>.
+    </p>
+
+  </section>
+
+</article>

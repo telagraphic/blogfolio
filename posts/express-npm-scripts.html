@@ -1,0 +1,86 @@
+---
+title: Express Build Scripts
+layout: page
+permalink: /express-npm
+---
+
+<article class="post">
+
+  <section class="post__header">
+    <h2>Express Development & NPM</h2>
+    <time>8/2020</time>
+  </section>
+
+  <section class="post__banner">
+    <img src="{{site.baseurl}}assets/img/posts/npm-logo.png" alt="Express & NPM Build Scripts"></img>
+  </section>
+
+  <section class="post__article">
+    <p>
+      This post will show you how to use npm packages for running tasks and bundling your node app for deployment.
+      This is not an exhaustive guide but enough to get you started on customizing your own configurations.
+      I use this setup for deploying to heroku.
+    </p>
+  </section>
+
+  <section class="post__article">
+    <h3 id="server-side">Server Side Build Scripts</h3>
+
+    <p>
+      The problem I'm trying to solve is setting up live-reload for client and server side code when developing a node app.
+      The code below will cover running a development server for coding and designing on your workstation.
+      This does not cover the deployment step as that is a bit more complicated. I'll leave that up to you to figure out.
+    </p>
+
+    <p>
+      Below is the structure for the app. The <b>/server</b> will contain all the backend javascript files and
+      <b>/public</b> will have the same files for the static site that I just covered above.
+    </p>
+
+    <img src="{{site.baseurl}}assets/img/posts/node-app-structure-2.png" alt="Node App Structure"></img>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "scripts": {
+          "start": "pm2-runtime start ecosystem.config.js --env production",
+          "server:restart": "nodemon server.js",
+          "public:scss": "node-sass --output-style nested -o public/css public/scss/styles.scss",
+          "public:watch": "onchange 'public/scss' -- npm run public:scss",
+          "public:reload": "browser-sync start --proxy 'localhost:3000' --ss 'public/views' --files 'public/scss/**/*.scss, public/views/**/*.hbs, public/js/*.js' --no-notify --ignore=node_modules",
+          "server": "run-p server:restart public:watch public:reload"
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      <b>start</b> uses the <a href="https://www.npmjs.com/package/pm2">pm2</a> process manager for running the app on a production server.
+      This ensures your app won't crash if something goes wrong!
+    </p>
+
+    <p>
+      <b>server:restart</b> uses <a href="https://www.npmjs.com/package/nodemon">nodemon</a> which restarts the node application when there
+      is a file change. Typically, you watch your express server file.
+    </p>
+
+    <p>
+      <b>public:scss</b> compiles and outputs the SASS to a <b>styles.css</b> for our client app.
+    </p>
+
+    <p>
+      <b>public:watch</b> watches the <b>public/scss</b> directory for any SASS changes and re-compiles our main <b>styles.scss</b>
+    </p>
+
+    <p>
+      <b>public:reload</b> uses the <b>--proxy</b> option wraps our <b>localhost:3000</b> so that we can run our server side API
+      and static public files. This is the key setup that makes back-end and front-end much easier for us!
+    </p>
+
+    <p>
+      <b>server</b> runs all the commands together.
+    </p>
+  </section>
+
+</article>

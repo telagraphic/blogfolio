@@ -34,6 +34,10 @@ permalink: /howler-soundboard
       <b>.mp3</b>, then used <a href="https://www.freeconvert.com/mp3-to-webm">freeconvert.com</a> to generate webm files. I aimed to
       make each file under 2MB. Check your network performance monitor in your devtools to check for bottlenecks.
     </p>
+
+    <button>
+      <a href="{{site.baseurl}}assets/files/howler-soundboard/howler-soundboard.zip" download>DOWNLOAD</a> the full example with code and audio files to follow along.
+    </button>
   </section>
 
   <section class="post__article">
@@ -128,16 +132,6 @@ permalink: /howler-soundboard
   </section>
 
 
-
-  <!-- <figure class="post__figure">
-    <img src="{{site.baseurl}}assets/flexulator/flexulator-1.png" alt="Flex Box Inspector">
-    <figcaption>
-      <h5>
-        Firefox Flexbox Inspector Console
-      </h5>
-    </figcaption>
-  </figure> -->
-
   <section class="post__article">
     <h3>Playing and Stopping</h3>
     <p>
@@ -168,6 +162,13 @@ permalink: /howler-soundboard
       First, it is important to understand the difference between <b>event.target</b> and <b>event.currentTarget</b>.
       The element that 'fires' the click event is the <b>target</b>, it is the element that was clicked and bubbles up thru the DOM
       to where we are listening on the <b>currentTarget</b>, the element that we attached the event listener to.
+    </p>
+
+    <p>
+      The first two lines in the function use <b>event.currentTarget</b> to select our our <b>.sound-box</b> component.
+      We grab a data attribute for the sound name and range slider volume attribute. The <b>currentTarget</b> is
+      the element we added the event listener and if I were to make changes to the DOM layout with the <b>.sound-box</b> it won't
+      break my code. Not the best example but useful.
     </p>
 
   </section>
@@ -291,6 +292,10 @@ permalink: /howler-soundboard
     <p>
       There you have it, now you can make your own soundboard. To see the full demo of the code above, check out <a href="https://antiambient.com/">Anti-Ambient</a>.
     </p>
+
+    <button>
+      <a href="{{site.baseurl}}assets/files/howler-soundboard/howler-soundboard.zip" download>DOWNLOAD</a> the full example with code.
+    </button>
   </section>
 
 
