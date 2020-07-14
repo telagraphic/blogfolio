@@ -1,40 +1,45 @@
 ---
 title: Express Build Scripts
 layout: page
-permalink: /express-npm
+permalink: /express-browser-sync
 ---
 
 <article class="post">
 
   <section class="post__header">
-    <h2>Express Development & NPM</h2>
+    <h2>Express Development & Browser-Sync</h2>
     <time>8/2020</time>
   </section>
 
   <section class="post__banner">
-    <img src="{{site.baseurl}}assets/img/posts/npm-logo.png" alt="Express & NPM Build Scripts"></img>
+    <img src="{{site.baseurl}}assets/img/posts/browser-sync-logo.png" alt="Express & Browser-Sync"></img>
   </section>
 
   <section class="post__article">
+
     <p>
-      This post will show you how to use npm packages for running tasks and bundling your node app for deployment.
-      This is not an exhaustive guide but enough to get you started on customizing your own configurations.
-      I use this setup for deploying to heroku.
+      So you've got your front end design ready and your back end code working, but you need to figure out
+      out how to display your data. Your just displaying data, no complicated front end state stuff to worry about.
+      You go with <a href="https://www.npmjs.com/package/express-handlebars">express-handlebars</a> and watch this
+      <a href="https://www.youtube.com/watch?v=erfN7fH7A6s&list=PLurIMwd6GdCi3ssXNAcjZ2l5mYaTfYPhf">excellent youtube series</a>
+      to get it setup and working.
     </p>
-  </section>
-
-  <section class="post__article">
-    <h3 id="server-side">Server Side Build Scripts</h3>
 
     <p>
-      The problem I'm trying to solve is setting up live-reload for client and server side code when developing a node app.
-      The code below will cover running a development server for coding and designing on your workstation.
-      This does not cover the deployment step as that is a bit more complicated. I'll leave that up to you to figure out.
+      Then you hit a snag with the development workflow: you are serving templates from your server while making making changes
+      to the front end. You need to get these two working together so that your NPM build scripts can compile your SASS, watch
+      for changes and refresh your browser.
+    </p>
+
+    <p>
+      <a href="https://www.browsersync.io/docs">Browser-sync</a> provides an option to proxy our app instance that
+      will allow us to use <b>nodemon</b> to run our app and the server side templating along with our front end live-reload.
     </p>
 
     <p>
       Below is the structure for the app. The <b>/server</b> will contain all the backend javascript files and
-      <b>/public</b> will have the same files for the static site that I just covered above.
+      <b>/public</b> will have the same files for the static site <a href="{{site.baseurl}}npm-build-scripts">that I cover here</a>.
+      <b>/views</b> is where the <b>handblebars</b> templates are located.
     </p>
 
     <img src="{{site.baseurl}}assets/img/posts/node-app-structure-2.png" alt="Node App Structure"></img>
