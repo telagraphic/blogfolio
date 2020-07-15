@@ -1,0 +1,199 @@
+<!doctype html><html class="no-js" lang="en" dir="ltr"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content=""><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"><title>Nick Lyons Blogfolio</title><link rel="canonical" href="https://www.telagraphic.com"><meta name="description" content="Front end learnings on UI/UX, Code and Design"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="stylesheet" href="/css/main.css"><link rel="preload" href="/assets/fonts/PublicSans-ThinItalic.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/PublicSans-Bold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/PublicSans-ExtraLight.woff2" as="font" type="font/woff2" crossorigin><style>
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')";
+      font-display: swap;
+      font-weight: 200;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 800;
+    }
+  00040font-face{font-family:"Public Sans";src:"url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')";font-display:swap;font-weight:200}
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')";
+      font-display: swap;
+      font-weight: 200;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 800;
+    }
+  00040font-face{font-family:"Public Sans";src:"url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')";font-display:swap;font-weight:600}
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')";
+      font-display: swap;
+      font-weight: 200;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "Public Sans";
+      src: "url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')";
+      font-display: swap;
+      font-weight: 800;
+    }
+  00040font-face{font-family:"Public Sans";src:"url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')";font-display:swap;font-weight:800}</style></head><body> <!--[if lte IE 9]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p><![endif]--><nav class="navigation"><ul><li> <a href="/"> PORTFOLIO </a></li><li> <a href="/posts"> POSTS </a></li><li> <a href="/about"> ABOUT </a></li></ul> </nav> <main class="main-article" data-barba="wrapper"> <article class="barba-container" data-barba="container"> <article class="post"><section class="post__header"><h2>Twitter API: Get Timeline Tweets From Multiple Tweeters</h2> <time>8/2020</time> </section><section class="post__banner"> <img src="/assets/img/posts/browser-sync-logo.png" alt="Express & Browser-Sync"></img> </section><section class="post__article"><p> In this post I'll cover using the <a href="https://github.com/draftbit/twitter-lite">twitter-lite</a> package to loop through an array of twitter users and fetch their tweets. You'll need a twitter developer account and app to get your set of keys to access the <a href="https://developer.twitter.com/en/docs">twitter api</a>. This might take a day or two for them to verify your application, I suggest selecting the "Exploring The API" or "Student" options.</p><p> It will help to be aware of <b>async/await</b> and promises since they are very useful for making asynchronous actions like network api calls, querying database and reading/writing to files. If you are unfamiliar with <b>async/await</b> then this is a great way to learn and see a practical use case of it in action. I sure learned about it putting the <a href="http://www.frontendtweets.com/">app together</a> that this example is based on.</p><button> <a href="/assets/files/twitter-api.zip" download>DOWNLOAD</a> the full example with code and audio files to follow along. </button><h3>Twitter API</h3><p> The Twitter API has many endpoints for getting all kinds of data, we'll be focusing on the <a href="https://developer.twitter.com/en/docs/tweets/timelines/overview">statuses/user_timeline</a> to get a set of recent tweets by providing a <b>user_name</b> or <b>user_id</b>. This will allow us to get other users' tweets which is kinda of creepy if you think about it. Luckily we'll be retrieving user's who are leaders and mover and shakers in the front end development community, so they're should be a lot of cool stuff relevant to what we are doing in this tutorial.</p><p> The order of code operations will be this: <b>1)</b> read a file of twitter users, <b>2)</b> loop through these users and call a function to fetch their tweets, <b>3)</b> aggregate all those tweets into one array, <b>4>)</b> do something like save to a database, file or just display somewhere.</p><p> But first, you'll need your twitter app's keys and tokens which you can find in your developer account dashboard. We'll need to initialize our twitter API object with the required authentication credentials. I'm saving mine in environment variables, but you can easily replace them with the raw string.</p> </section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        const Twitter = require('twitter-lite');
+
+        const twitter = new Twitter({
+          subdomain: "api",
+          consumer_key: process.env.CONSUMER_KEY, // from Twitter.
+          consumer_secret: process.env.CONSUMER_SECRET, // from Twitter.
+          access_token_key: process.env.ACCESS_TOKEN_KEY, // from your User (oauth_token)
+          access_token_secret: process.env.ACCESS_TOKEN_SECRET // from your User (oauth_token_secret)
+        });
+      </code>
+</pre></section><section class="post__article"><p> I have collected a small list of front end tweeters for us to query against. I have stored these in a <b>json</b> file. When we call the twitter api endpoint at <a href="https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline">statuses/user_timline</a>, we'll get a response with a bunch of fields. Take a look at the link to see.</p> </section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        [{
+            "handle": "BrendanEich",
+          },
+          {
+            "handle": "dan_abramov",
+          },
+          {
+            "handle": "rachsmithtweets",
+          },
+          {
+            "handle": "addyosmani",
+          },
+          {
+            "handle": "sindresorhus",
+          },
+          {
+            "handle": "sarah_edo",
+          },
+          {
+            "handle": "wesbos",
+          },
+          {
+            "handle": "NNgroup",
+          },
+          {
+            "handle": "joulee",
+          },
+          {
+            "handle": "JAF_Designer",
+          },
+          {
+            "handle": "rjs",
+          },
+          {
+            "handle": "xeeliz",
+          },
+          {
+            "handle": "alyssaxuu",
+          }
+        ]
+      </code>
+</pre></section><section class="post__article"><p> Our first function will read this json file and parse the JSON for another function. We are wrapping this in a promise and then putting the <b>async</b> keyword in front the <b>getTweeters()</b> function to tell our code that this function returns a promise.Check out <a href="https://javascript.info/async-await">javascript.info</a> for some great examples of how to use async/await. The reason we are using promises is to make our code asynchronous in order to handle tasks that take an uncertain amount of time to complete, hence it's called a promise for something in the future to occur.</p><p> The third line uses Node's file system library to <b>readFile</b> which is our <b>tweeters.json</b>. The <b>.</b> in the file path says to look in the current directory, unlike a double <b>..</b> which says to move up a directory. We use the promise callback keyword <b>resolve</b> to return our parsed json contents from the file. The <b>reject</b> callback will return the error.</p> </section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        async function getTweeters() {
+          return new Promise((resolve, reject) => {
+            fs.readFile('./tweeters.json', (err, data) => {
+              if (err) reject(err);
+              else resolve(JSON.parse(data));
+            });
+          });
+        };
+      </code>
+</pre></section><section class="post__article"><p> The next function loopa through the array of user objects from our file, and calls another function <b>getUserProfiles()</b> which actually makes the twitter api call. This was a crucial learning lesson for me on looping with <b>async/await</b>. You'll notice we are using a <b>for</b> loop and not something like <b>forEach</b> on our <b>users</b> array. <a href="https://zellwk.com/blog/async-await-in-loops#await-in-a-foreach-loop">Zell Liew</a>explains that <b>forEach</b> is not promise aware. Thus we have to use a <b>for</b> loop and it works just fine but definitely a subtle detailed gotcha to know.</p><p> The function ends with a deep flattening of all the tweets so that they are on the same level of the array and not nested.</p></section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        async function getProfiles(users) {
+
+          let allTweeterProfiles = [];
+
+          for (let index = 0; index < users.length; index++) {
+            let tweeterProfiles = await getUserProfiles(users[index]);
+            allTweeterProfiles.push(tweeterProfiles);
+          }
+
+          return flattenDeep(allTweeterProfiles);
+        };
+      </code>
+</pre></section><section class="post__article"><h3>Getting the Tweets</h3><p> We are finally using the <b>twitter</b> object we created at the top of the file and calling the <b>get</b> method and passing in the <b>statuses/user_timeline</b> endpoint along with the <b>user.handle</b> and a the number of tweets we would like to return. Once again, we are wrapping this code with a <b>promise</b> and <b>resolving</b> the <b>userTweets</b> or <b>rejecting</b> with the error. Take some time to read each line of code in the function, there is a lot of good stuff happening.</p><p> The <b>if</b> state checks to make sure the tweet is not a retweet of someone else's tweet, we only want original tweets from the user. It would help to see the <a href="https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline">data structure returned from twitter for a single tweet</a>. After we get the data, we loop through it and save it to an object that will be added to the <b>userTweets</b> array.</p> </section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        async function getUserTweets(user) {
+
+          return new Promise((resolve, reject) => {
+            let userTweets = [];
+
+            twitter
+              .get("statuses/user_timeline", {screen_name: user.handle, count: 3})
+              .then(data => {
+
+                data.forEach(function(tweet) {
+
+                  if (!tweet.retweeted_status) {
+
+                    userTweets.push({
+                      "twittertime": utilities.twitterDate(tweet.created_at),
+                      "created": new Date(tweet.created_at),
+                      "handle": tweet.user.screen_name,
+                      "message": tweet.text,
+                      "site": tweet.user.url || '',
+                      "topic": user.topic,
+                      "hashtags": [...tweet.entities.hashtags],
+                      "link": `https://www.twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`,
+                      "id_string": tweet.id_str
+                    });
+                  }
+
+                });
+
+                resolve(userTweets);
+
+              })
+              .catch(error => {
+                reject(error);
+              });
+          });
+        };
+      </code>
+</pre></section><section class="post__article"><h3>A Helpful Tool</h3><p> <a href="https://httptoolkit.tech/">HTTP Toolkit</a> was posted on hackernews one day and I found it to be useful for api debugging and testing. I simply selected a terminal session, it opened up a terminal window and I navigated to my app directory, ran the node script and you'll get the HTTP response from the Twitter API. Very helpful!</p><figure class="post__figure"> <video autoplay loop muted playsinline> <source src="/assets/img/posts/http-toolkit-clip.webm" type="video/webm"> <source src="/assets/img/posts/http-toolkit-clip.mp4" type="video/mp4"> </video> <figcaption><h5> Firefox Flexbox Inspector Console</h5> </figcaption> </figure></section><section class="post__article"><h3>Saving the Tweets</h3><p> Finally, we'll save the tweets to a file. This would be the place to save to a database as well.</p></section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        async function saveTweets(tweets) {
+          fs.writeFileSync(`./tweets.json`, JSON.stringify(tweets));
+        };
+      </code>
+</pre></section><section class="post__article"><h3>Putting It Together</h3><p> At last, we can call our functions with <b>async/await</b> which allows us to write our code 'synchronously'. This means instead writing a bunch of <b>then's</b> on our promises we can simply return the result and use it into another function like below.</p></section><section class="post__code-snippet"> <pre>
+      <code class="language-js">
+        async function getAllTweets() {
+          let tweeters = await getTweeters();
+          let tweets = await getTweets(tweeters);
+          saveTweets(tweets);
+        }
+
+        getAllTweets();
+      </code>
+</pre></section></article> </article> </main> <noscript> You need to enable JavaScript to run this app. </noscript> <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script></body> <script>!function(){if("fonts"in document){const f=new FontFace("Public Sans","url(assets/fonts/PublicSans-Thin.woff2) format('woff2'), url(assets/fonts/PublicSans-Thin.woff) format('woff')",{weight:"100"}),s=new FontFace("Public Sans","url(assets/fonts/PublicSans-ThinItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ThinItalic.woff) format('woff')",{weight:"100",style:"italic"}),a=new FontFace("Public Sans","url(assets/fonts/PublicSans-ExtraLightItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLightItalic.woff) format('woff')",{weight:"200",style:"italic"}),t=new FontFace("Public Sans","url(assets/fonts/PublicSans-ExtraLight.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraLight.woff) format('woff')",{weight:"200"}),o=new FontFace("Public Sans","url(assets/fonts/PublicSans-Light.woff2) format('woff2'), url(assets/fonts/PublicSans-Light.woff) format('woff')",{weight:"300"}),l=new FontFace("Public Sans","url(assets/fonts/PublicSans-LightItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-LightItalic.woff) format('woff')",{weight:"300",style:"italic"}),n=new FontFace("Public Sans","url(assets/fonts/PublicSans-Italic.woff2) format('woff2'), url(assets/fonts/PublicSans-Italic.woff) format('woff')",{style:"italic"}),i=new FontFace("Public Sans","url(assets/fonts/PublicSans-Medium.woff2) format('woff2'), url(assets/fonts/PublicSans-Medium.woff) format('woff')",{weight:"400"}),e=new FontFace("Public Sans","url(assets/fonts/PublicSans-MediumItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-MediumItalic.woff) format('woff')",{weight:"400",style:"italic"}),c=new FontFace("Public Sans","url(assets/fonts/PublicSans-Regular.woff2) format('woff2'), url(assets/fonts/PublicSans-Regular.woff) format('woff')",{weight:"500"}),w=new FontFace("Public Sans","url(assets/fonts/PublicSans-Bold.woff2) format('woff2'), url(assets/fonts/PublicSans-Bold.woff) format('woff')",{weight:"600"}),u=new FontFace("Public Sans","url(assets/fonts/PublicSans-BoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-BoldItalic.woff) format('woff')",{weight:"600",style:"italic"}),r=new FontFace("Public Sans","url(assets/fonts/PublicSans-SemiBold.woff2) format('woff2'), url(assets/fonts/PublicSans-SemiBold.woff) format('woff')",{weight:"700"}),S=new FontFace("Public Sans","url(assets/fonts/PublicSans-SemiBoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-SemiBoldItalic.woff) format('woff')",{weight:"700",style:"italic"}),P=new FontFace("Public Sans","url(assets/fonts/PublicSans-ExtraBold.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBold.woff) format('woff')",{weight:"800"}),b=new FontFace("Public Sans","url(assets/fonts/PublicSans-ExtraBoldItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-ExtraBoldItalic.woff) format('woff')",{weight:"800",style:"italic"}),m=new FontFace("Public Sans","url(assets/fonts/PublicSans-Black.woff2) format('woff2'), url(assets/fonts/PublicSans-Black.woff) format('woff')",{weight:"900"}),d=new FontFace("Public Sans","url(assets/fonts/PublicSans-BlackItalic.woff2) format('woff2'), url(assets/fonts/PublicSans-BlackItalic.woff) format('woff')",{weight:"900",style:"italic"});Promise.all([f.load(),s.load(),a.load(),t.load(),o.load(),l.load(),n.load(),i.load(),e.load(),c.load(),w.load(),u.load(),r.load(),S.load(),P.load(),b.load(),m.load(),d.load()]).then(function(f){f.forEach(function(f){document.fonts.add(f)})})}}()</script><script src="https://cdn.usefathom.com/script.js" site="ESYDHBMT" spa="auto" defer></script><script src="https://unpkg.com/@barba/core"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js"></script><script src="js/blog.js"></script></html>
