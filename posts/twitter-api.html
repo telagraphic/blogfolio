@@ -268,7 +268,7 @@ permalink: /twitter-api
       my app directory, ran the node script and you'll get the HTTP response from the Twitter API. Very helpful!
     </p>
 
-    <figure class="post__figure">
+    <figure class="post__figure-video">
       <video autoplay loop muted playsinline>
         <source src="{{site.baseurl}}assets/img/posts/http-toolkit-clip.webm" type="video/webm">
         <source src="{{site.baseurl}}assets/img/posts/http-toolkit-clip.mp4" type="video/mp4">
@@ -305,9 +305,25 @@ permalink: /twitter-api
   <section class="post__article">
     <h3>Putting It Together</h3>
     <p>
-      At last, we can call our functions with <b>async/await</b> which allows us to write
-      our code 'synchronously'. This means instead writing a bunch of <b>then's</b> on our promises we can
-      simply return the result and use it into another function like below.
+      At last, we call all of our functions but instead of using promises to write code like below.
+    </p>
+
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        getTweeters()
+          .then(getTweets)
+          .then(saveTweets)
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      We can write the code that reads like synchronous code with <b>async/await</b>.
+      It definitly makes it easier to read!
     </p>
 
   </section>
@@ -318,12 +334,20 @@ permalink: /twitter-api
         async function getAllTweets() {
           let tweeters = await getTweeters();
           let tweets = await getTweets(tweeters);
-          saveTweets(tweets);
+          await saveTweets(tweets);
         }
 
         getAllTweets();
       </code>
     </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      This post was based on <a href="http://www.frontendtweets.com/">Front End Tweets</a>, a project that fetches
+      tweets from popular UI/UX/Front Ender's.
+    </p>
+
   </section>
 
 </article>

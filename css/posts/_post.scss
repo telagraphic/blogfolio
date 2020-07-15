@@ -164,6 +164,37 @@
 
 }
 
+.post__figure-video {
+  max-width: 100%;
+  margin: 5% auto;
+
+  @media (min-width: 850px) {
+    max-width: 100%;
+    margin: 3% auto;
+  }
+
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    margin: 3% 0% 3% 0%;
+
+    text-align: center;
+    font-weight: 700;
+    font-style: italic;
+
+    @media (min-width: 850px) {
+      margin: 3% 15% 3% 0%;
+    }
+  }
+
+  h5 {
+    font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
+  }
+}
+
 .post__list {
 
   max-width: 89%;
