@@ -3,10 +3,10 @@ const fs = require('fs');
 
 const twitter = new Twitter({
   subdomain: "api",
-  consumer_key: 'Bwvsu5c8NgcSjjxNG5onJCBK7', //process.env.CONSUMER_KEY, // Bwvsu5c8NgcSjjxNG5onJCBK7
-  consumer_secret: 'VEobIrRgmzKMH07RbcuJFI90rB7YVCu4jNkP8EVKUoFN9xenCx', //process.env.CONSUMER_SECRET, // VEobIrRgmzKMH07RbcuJFI90rB7YVCu4jNkP8EVKUoFN9xenCx
-  access_token_key: '598754807-Ryn692wXnJWjCvognmqtcbfKsqXhXTdxeN4BDlAf', //process.env.ACCESS_TOKEN_KEY, // 598754807-Ryn692wXnJWjCvognmqtcbfKsqXhXTdxeN4BDlAf
-  access_token_secret: 'yM8ZtjVsFVJXI8qV9mVskTkwpKadhrMZwoxem54IHyC9D' //process.env.ACCESS_TOKEN_SECRET // yM8ZtjVsFVJXI8qV9mVskTkwpKadhrMZwoxem54IHyC9D
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token_key: process.env.ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
 async function getTweeters() {

@@ -7,12 +7,12 @@ permalink: /twitter-api
 <article class="post">
 
   <section class="post__header">
-    <h2>Twitter API: Get Timeline Tweets From Multiple Tweeters</h2>
+    <h2>Get Tweets From Multiple Tweeters</h2>
     <time>8/2020</time>
   </section>
 
   <section class="post__banner">
-    <img src="{{site.baseurl}}assets/img/posts/browser-sync-logo.png" alt="Express & Browser-Sync"></img>
+    <img src="{{site.baseurl}}assets/img/posts/twitter-api.png" alt="Twitter API"></img>
   </section>
 
   <section class="post__article">
@@ -75,57 +75,10 @@ permalink: /twitter-api
 
   <section class="post__article">
     <p>
-      I have collected a small list of front end tweeters for us to query against. I have stored these in a <b>json</b> file.
+      I have collected a small list of front end tweeters for us to query against. I have stored these in the <b>tweeters.json</b> file.
       When we call the twitter api endpoint at <a href="https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline">statuses/user_timline</a>,
       we'll get a response with a bunch of fields. Take a look at the link to see.
     </p>
-  </section>
-
-  <section class="post__code-snippet">
-    <pre>
-      <code class="language-js">
-        [{
-            "handle": "BrendanEich",
-          },
-          {
-            "handle": "dan_abramov",
-          },
-          {
-            "handle": "rachsmithtweets",
-          },
-          {
-            "handle": "addyosmani",
-          },
-          {
-            "handle": "sindresorhus",
-          },
-          {
-            "handle": "sarah_edo",
-          },
-          {
-            "handle": "wesbos",
-          },
-          {
-            "handle": "NNgroup",
-          },
-          {
-            "handle": "joulee",
-          },
-          {
-            "handle": "JAF_Designer",
-          },
-          {
-            "handle": "rjs",
-          },
-          {
-            "handle": "xeeliz",
-          },
-          {
-            "handle": "alyssaxuu",
-          }
-        ]
-      </code>
-    </pre>
   </section>
 
   <section class="post__article">
@@ -264,8 +217,8 @@ permalink: /twitter-api
     <h3>A Helpful Tool</h3>
     <p>
       <a href="https://httptoolkit.tech/">HTTP Toolkit</a> was posted on hackernews one day and I found it to be useful
-      for api debugging and testing. I simply selected a terminal session, it opened up a terminal window and I navigated to
-      my app directory, ran the node script and you'll get the HTTP response from the Twitter API. Very helpful!
+      for api debugging and testing. I simply selected a terminal session which opened up a terminal window and I navigated to
+      my app directory, ran the node script and you'll get the HTTP response and JSON from the Twitter API. Very helpful!
     </p>
 
     <figure class="post__figure-video">
@@ -275,7 +228,7 @@ permalink: /twitter-api
       </video>
       <figcaption>
         <h5>
-          Firefox Flexbox Inspector Console
+          HTTP Toolkit
         </h5>
       </figcaption>
     </figure>
@@ -305,7 +258,7 @@ permalink: /twitter-api
   <section class="post__article">
     <h3>Putting It Together</h3>
     <p>
-      At last, we call all of our functions but instead of using promises to write code like below.
+      At last, we call all of our functions but instead of using promises to write code like below:
     </p>
 
   </section>
@@ -323,7 +276,7 @@ permalink: /twitter-api
   <section class="post__article">
     <p>
       We can write the code that reads like synchronous code with <b>async/await</b>.
-      It definitly makes it easier to read!
+      It definitly is a much smoother way to write promises. Probably better for your eyes too.
     </p>
 
   </section>
