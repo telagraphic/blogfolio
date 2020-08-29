@@ -15,7 +15,7 @@ permalink: /nist
     <img src="{{site.baseurl}}assets/nist/nist-logo.svg.png" alt="NIST Logo""></img>
   </section>
 
-  <section class="post__article">
+  <section class=" post__article">
     <p>
       A couple of months ago, I was scrolling through hacker news headlines.
       I saw NIST's Uncertainty Machine, checked out the website and thought it was cool.
@@ -195,8 +195,8 @@ permalink: /nist
   <section class="post__article">
 
     <h3>
-        UX Audit
-      </h3>
+      UX Audit
+    </h3>
     <p>
       This tool has the flow of being designed for one user: the original authors.
       It looks like they built the tool for their own use and then shared it with others.
@@ -245,14 +245,14 @@ permalink: /nist
     </p>
 
     <h3>
-        Site Layout
-      </h3>
+      Site Layout
+    </h3>
     <p>
       I wanted to keep the main layout design in tact but updated it for Grid and for mobile responsiveness
       I set up a sticky footer with grid areas
       <a href="https://css-tricks.com/couple-takes-sticky-footer/#article-header-id-4">
-          dividing up the header, content and footer.
-        </a>
+        dividing up the header, content and footer.
+      </a>
       Cleaning up the HTML was more work that I thought it be, but it is crucially important.
     </p>
     <p>
@@ -260,8 +260,8 @@ permalink: /nist
       for accessibility as well. HTML 5 elements like <b>section, article, nav,</b> and <b>aside</b>
       are now processed by the
       <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML_sections_and_outlines">
-          HTML Outline Algorithm
-        </a> that creates a page hierarchy that is considered an important best practice.
+        HTML Outline Algorithm
+      </a> that creates a page hierarchy that is considered an important best practice.
       <b>div</b>'s don't have a semantic structural meaning.
       They are useful for non-semantic styling like wrapping some code with a class for styling purposes only.
 
@@ -278,8 +278,8 @@ permalink: /nist
       I used flexbox to set the logo, title, and version and responsified it for mobile.
     </p>
     <h3>
-        The Form
-      </h3>
+      The Form
+    </h3>
     <p>
       Forms on mobile devices without any styling don't look that great.
       After some googling, I found the very insightful
@@ -297,8 +297,8 @@ permalink: /nist
       I updated the input types of <b>text</b> and changed them to <b>number</b>.
       The browser puts number arrows on number inputs and can be
       <a href="https://www.thatstevensguy.com/programming/disable-arrows-on-number-inputs/">
-          overridden them with some css and javascript.
-        </a>
+        overridden them with some css and javascript.
+      </a>
     </p>
     <p>
       I moved the correlations table to the input quantities section. I removed the names for the quantity input fields and
@@ -320,8 +320,8 @@ permalink: /nist
     <p>
       Forms now have an API that allows you to
       <a href="https://alligator.io/css/styling-form-input-validity/">
-          detect for different input states.
-        </a>
+        detect for different input states.
+      </a>
       Using these new psuedo-classes for form inputs, I set up validation logic
       that displayed client side validation checks instead of waiting for an error page returned after a submission.
     </p>
@@ -337,44 +337,42 @@ permalink: /nist
     <img src="{{site.baseurl}}assets/nist/field-validation.gif" alt="Input Validation">
   </figure>
 
-    <section class="post__article">
-      <p>
-        <a href="https://uxmovement.com/">UXMovement.com</a> has many great articles emphasising specific UX techniques
-        backed by data and user science. Reading through this site provided guidance on
-        where to <a href="https://uxmovement.com/forms/the-best-place-for-error-messages-on-forms/">place input errors</a>,
-        <a href="https://uxmovement.com/forms/stronger-visual-cues-for-text-fields/">offsetting input fields for user's eyes</a>
-        and much more.
-      </p>
-      <p>
-        Before I started to code a section, I would read through UXMovement to understand how I should approach the problem.
-        It became a serious u-turn in my approach to just code and refactor after realizing your first idea had no thought behind it.
-      </p>
+  <section class="post__article">
+    <p>
+      <a href="https://uxmovement.com/">UXMovement.com</a> has many great articles emphasising specific UX techniques
+      backed by data and user science. Reading through this site provided guidance on
+      where to <a href="https://uxmovement.com/forms/the-best-place-for-error-messages-on-forms/">place input errors</a>,
+      <a href="https://uxmovement.com/forms/stronger-visual-cues-for-text-fields/">offsetting input fields for user's eyes</a>
+      and much more.
+    </p>
+    <p>
+      Before I started to code a section, I would read through UXMovement to understand how I should approach the problem.
+      It became a serious u-turn in my approach to just code and refactor after realizing your first idea had no thought behind it.
+    </p>
 
-      <h3>The Table</h3>
-      <p>
-        With a data intensive calculation, the inputs and distributions table breaks the layout.
-        I rewrote the markup to use grid, applying the awesome grid cheat code,<b>repeat(auto-fill, minmax(1fr, 1fr))</b> on each row.
-        I made the table responsive to display columns on mobile.
-        I highly doubt anyone would use this on their mobile phone for serious work, but I like things to look nice and grid
-        makes this so much easier.
-      </p>
-    </section>
+    <h3>The Table</h3>
+    <p>
+      With a data intensive calculation, the inputs and distributions table breaks the layout.
+      I rewrote the markup to use grid, applying the awesome grid cheat code,<b>repeat(auto-fill, minmax(1fr, 1fr))</b> on each row.
+      I made the table responsive to display columns on mobile.
+      I highly doubt anyone would use this on their mobile phone for serious work, but I like things to look nice and grid
+      makes this so much easier.
+    </p>
+  </section>
 
-    <figure class="post__figure">
-      <figcaption>
-        <h5>
+  <figure class="post__figure">
+    <figcaption>
+      <h5>
         CSS Grid Table
       </h5>
-      </figcaption>
-      <img src="{{site.baseurl}}assets/nist/correlations-table.gif" alt="Correlations Table">
+    </figcaption>
+    <img src="{{site.baseurl}}assets/nist/correlations-table.gif" alt="Correlations Table">
   </figure>
 
-      <section class="post__article">
-        <h3>In Sum</h3>
-        <p>
-          There are so many other design decisions that could be described, but I chose to provide a high level overview.
-          Next time, I will keep describe some of the more intricate micro-interactions and the code and design decisions
-          I made. Till next time!
-        </p>
-      </section>
+  <section class="post__article">
+    <h3>In Sum</h3>
+    <p>
+      There are so many other design decisions that could be described, but I chose to provide a high level overview.
+    </p>
+  </section>
 </article>

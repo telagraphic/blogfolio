@@ -30,9 +30,8 @@ permalink: /howler-soundboard
       Unfortunately, very fitting for the pandemic times we live in.
     </p>
     <p>
-      As for the audio files, I used Adobe Audition to create my loops. Exported them as <b>.wav</b> files, then converted them to
-      <b>.mp3</b>, then used <a href="https://www.freeconvert.com/mp3-to-webm">freeconvert.com</a> to generate webm files. I aimed to
-      make each file under 2MB. Check your network performance monitor in your devtools to check for bottlenecks.
+      As for the audio files, I used Adobe Audition to create my loops. Exported them as <b>wav</b> files, then converted them to
+      <b>mp3</b>, then used <a href="https://gist.github.com/protrolium/e0dbd4bb0f1a396fcb55">ffmpeg</a> to generate <b>webm</b> files.
     </p>
 
     <button>
@@ -44,12 +43,12 @@ permalink: /howler-soundboard
     <h3>One Sound</h3>
 
     <p>
-      Reading through the <a href="https://github.com/goldfire/howler.js/#documentation">docs</a> recommends
+      The <a href="https://github.com/goldfire/howler.js/#documentation">docs</a> recommend
       using <b>webm</b> for covering most browsers and <b>mp3</b> for Internet Explorer fallback suport.
       Following the docs, we can create a new <b>Howl</b> object, provide our sources and set <b>html5</b> to <b>true</b>
       for large audio files to play before being completely downloaded. This helps if the user has clicked on the play button before the file
       has finished, it will still play!
-      Since I'll be looping these files, I've set that to <b>true</b>.
+      Since I'll be looping these files, I've set that to <b>true</b>. The volume is set to 0, which we will fade up later in the code.
     </p>
   </section>
 
@@ -71,7 +70,7 @@ permalink: /howler-soundboard
 
     <p>
       Howler has a global object <b>Howler</b> that controls all sounds. A <b>Howl</b> as defined above falls under this parent object.
-      Each <b>Howl</b> has a whole list of methods to be called on just that sound. To see how we can get an array of sounds for our
+      Each <b>Howl</b> has a whole list of methods that can be called for just that sound instance. To see how we can get an array of sounds for our
       soundboard, let's use an object to store them. The paths to the audio files are relative to the javascript file we are calling them from.
       Each sound is stored in an object with a descriptive name which we will connect to our markup.
     </p>
@@ -117,7 +116,7 @@ permalink: /howler-soundboard
     <h3>The Markup</h3>
     <p>
 
-      Each button will contain a <b>data-sound="name-here"</b> attribute that maps to the sounds object above.
+      Each button and the volume range slider will contain a <b>data-sound="name-here"</b> attribute that maps to the <b>soundboardAudio</b> object above.
       With some javascript, we'll get the attribute, find the matching sound in our javascript object and play, stop and adjust the volume.
       Here is the markup and styles for our 3 icons.
     </p>
@@ -136,7 +135,7 @@ permalink: /howler-soundboard
     <h3>Playing and Stopping</h3>
     <p>
       Since this is a simple soundboard, we just need to play and stop a specific sound when the user clicks the button.
-      First, I select all the <b>.sound-box</b> elements that will act as a play/stop button and add an event listener that calls the
+      First, let's select all the <b>.sound-box</b> elements that will act as a play/stop button and add an event listener that calls the
       <b>toggleButtonSounds</b>.
     </p>
   </section>
@@ -156,19 +155,28 @@ permalink: /howler-soundboard
   </section>
 
   <section class="post__article">
+    <p>
+      That <b>selectAll</b> function is a cool convenient way to wrap <b>document.querySelectorAll</b>. I learned this from
+      <a href="https://www.snorkl.tv/">Carl Schoof</a>, the <b>GSAP</b> maestro.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        let select = e => document.querySelector(e);
+        let selectAll = e => document.querySelectorAll(e);
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
 
     <p>
       The <b>toggleButtonSounds</b> has got several things going on, let's take a look at each part.
       First, it is important to understand the difference between <b>event.target</b> and <b>event.currentTarget</b>.
       The element that 'fires' the click event is the <b>target</b>, it is the element that was clicked and bubbles up thru the DOM
       to where we are listening on the <b>currentTarget</b>, the element that we attached the event listener to.
-    </p>
-
-    <p>
-      The first two lines in the function use <b>event.currentTarget</b> to select our our <b>.sound-box</b> component.
-      We grab a data attribute for the sound name and range slider volume attribute. The <b>currentTarget</b> is
-      the element we added the event listener and if I were to make changes to the DOM layout with the <b>.sound-box</b> it won't
-      break my code. Not the best example but useful.
     </p>
 
   </section>
@@ -202,21 +210,30 @@ permalink: /howler-soundboard
 
   <section class="post__article">
     <p>
+      The first two lines in the function use <b>event.currentTarget</b> to select our <b>.sound-box</b> component.
+      <b>buttonSounds</b> will be used to find the matching audio sound in the <b>soundboardAudio</b> object.
+      We grab a data attribute for the sound name and range slider volume attribute. The <b>currentTarget</b> is
+      the element we added the event listener on and if I were to make changes to the DOM layout within <b>.sound-box</b> it won't
+      break my code. Not the best example but useful.
+    </p>
+
+    <p>
       The first <b>if</b> statement checks to see if the <b>target</b> is a a volume element, if so, we return and do not proceed.
-      If the user is clicking the volume slider, I don't the rest of the code to run since it controls the play/stop functionality.
+      If the user is clicking the volume slider, I don't want the rest of the code to run since it controls the play/stop functionality.
       We'll see the volume function in the next part.
     </p>
 
     <p>
-      The second if is where we play/stop the actual sound. The first line in the function grabs the data attribute from the markup and
-      we use that to access the sound in our audio object named <b>soundboardAudio</b>. The <b>playing()</b> method returns a boolean
+      The second <b>if</b> is where we play/stop the actual sound. The first line in the function grabs the data attribute from the markup and
+      we use that to access the <b>howl</b> sound object in the <b>soundboardAudio</b> obect. The <b>playing()</b> method returns a boolean
       of true if the sound is playing or false if it is not. If the sound is playing, the <b>fade()</b> function will grab our current volume
-      and fade to 0. I then call <b>stop()</b> within a setTimeout to make sure the fade actually audible fades before calling the <b>stop()</b> method.
+      and fade to 0. I then call <b>stop()</b> within a setTimeout to make sure the fade actually audibly fades before calling the <b>stop()</b> method.
       If I didn't use a setTimeout and called <b>stop()</b> right after the <b>fade()</b>, the fade would be cut short.
     </p>
 
     <p>
-      The else statement will run if the sound is not playing. We simple <b>play()</b> the sound and <b>fade()</b> it up.
+      The else statement will run if the sound is not playing. We simply <b>play()</b> the sound and <b>fade()</b> it up using
+      the <b>currentVolume</b> attribute in our HTML. This attribute kinda acts like a simple state variable.
     </p>
   </section>
 
@@ -225,7 +242,7 @@ permalink: /howler-soundboard
 
     <p>
       Each sound has it's own volume slider, the function below grabs another data attribute on the range input to change the
-      volume for that specific sound by mapping it to our <b>soundboardAudio</b> object.
+      volume for that specific sound by mapping it to the correct <b>howl</b> sound object in the <b>soundboardAudio</b> object.
       The last line then sets a volume data attribute so that when the button is stopped and then played again, it will
       use the previous volume.
     </p>
@@ -255,8 +272,8 @@ permalink: /howler-soundboard
     <h3>Stop It All</h3>
 
     <p>
-      Let's say we are playing all the sounds and it's it getting to be too much, let's make them all stop.
-      This is easy. We simply called <b>Howler.stop()</b> to stop any sounds being actively played.
+      Let's say we are playing all the sounds and it's getting to be too much, let's make them all stop.
+      This is easy. We simply call <b>Howler.stop()</b> to stop any sounds being actively played.
       The rest of the function is just re-setting UI styles on elements back to their normal condition.
     </p>
 

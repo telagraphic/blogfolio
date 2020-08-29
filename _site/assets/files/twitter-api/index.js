@@ -18,18 +18,6 @@ async function getTweeters() {
   });
 };
 
-async function getProfiles(users) {
-
-  let allTweeterProfiles = [];
-
-  for (let index = 0; index < users.length; index++) {
-    let tweeterProfiles = await getUserProfiles(users[index]);
-    allTweeterProfiles.push(tweeterProfiles);
-  }
-
-  return flattenDeep(allTweeterProfiles);
-};
-
 const flattenDeep = (arr) => Array.isArray(arr) ? arr.reduce( (a, b) => a.concat(flattenDeep(b)) , []) : [arr]
 
 async function getTweets(users) {
