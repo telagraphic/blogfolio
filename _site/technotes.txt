@@ -1,0 +1,3 @@
+ffmpeg -i github-issues.mp4 -b:v 0 -crf 25 -f mp4 -vcodec libx264 -pix_fmt yuv420p github-issues.mp4
+ffmpeg -i flex-example-demo.mp4 -c vp9 -b:v 0 -crf 41 flex-example-demo.webm
+ffmpeg -i grow-shrink-mode.mp4 -c vp9 -b:v 0 -crf 41 grow-shrink-mode.webm
