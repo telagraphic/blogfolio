@@ -227,7 +227,41 @@
 
       margin: 3% 0;
     }
+  }
+}
 
+.post__list-plain {
+  ul {
+    list-style-position: outside;
+
+    @media (min-width: 850px) {
+      list-style-position: outside;
+    }
+  }
+
+  li {
+    margin: 5% 0;
+
+    font-weight: 300;
+    font-size: calc(14px + (26 - 14) * ((100vw - 320px) / (2000 - 320)));
+
+
+    @media (min-width: 850px) {
+      max-width: 55ch;
+
+      margin: 3% 0;
+    }
+  }
+}
+
+.post__list-nested {
+
+  ul {
+    padding: 0 0 0 4%;
+  }
+
+  li {
+    list-style-type: disc;
   }
 
 }

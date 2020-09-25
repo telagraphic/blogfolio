@@ -1,0 +1,619 @@
+---
+title: Post HTML
+layout: page
+permalink: /posthtml
+---
+
+<article class="post">
+
+  <section class="post__header">
+    <h2>Posthtml Static Site Starter</h2>
+    <time>9/2020</time>
+  </section>
+
+  <section class="post__banner">
+    <img src="{{site.baseurl}}assets/img/posts/posthtml-logo.png" alt="Posthtml Logo"></img>
+  </section>
+
+  <section class="post__article">
+    <h3>TL;DR</h3>
+    <p>
+      Setup a simple and basic 'static site generator' with html includes, markup linting,
+      live reload and a build process with PostHTML plugins.
+      Also convert BEM markup into HTML, html classes to CSS code and handy favicon generator.
+    </p>
+
+    <h3>PostHTML and PostCSS</h3>
+    <p>
+      For simple static site development and even <b>node.js express</b> development,
+      using NPM as my build tool and task runner is my go to setup.
+    </p>
+
+    <p>
+      I've just learned about <a href="https://github.com/postcss/postcss">PostCSS</a> which has about 23K stars on github.
+      It isn't just a SASS replacement, it allows you to do so many cool things which I'll cover in the next blog post.
+    </p>
+
+    <p>
+      After updating my static site starter repo by replacing node-sass with <b>PostCSS</b>
+      I soon learned about <a href="https://posthtml.org">PostHTML</a>.
+    </p>
+
+    <p>
+      With only 2.4K stars, this tool was the missing component to my workflow.
+      In this post I'll cover getting started with NPM build scripts and setting up postHTML to do
+      templating, linting, minification and some other things.
+      Checkout my first post on working with NPM if you are unfamiliar with using NPM as a build tool.
+    </p>
+
+
+    <h3>Minimal Static Site Generator</h3>
+
+    <p>
+      PostHTML is similar to PostCSS in that it takes raw HTML and parses it into a <a href="https://github.com/posthtml/posthtml-parser">AST</a>
+      by way of JSON. You then modify and transform the HTML AST with plug-ins.
+      There are several middleware packages for express, hapi and koa as well for server side development.
+    </p>
+
+
+    <p>
+      While tools like Jekyll and Elevnty do many of these things for us,
+      PostHTML allows developers to build their own workflow using a plug-in based approach.
+    </p>
+
+    <p>
+      In my case, I've been looking for a way that allows HTML includes much like a standard static site generator.
+      I dont' want to learn another SSG and have to learn the in's and out's of it.
+    </p>
+
+    <p>
+      The idea of rolling my own custom setup is more appealing and fun.
+      Plus, there are tools that make it a relative breeze.
+      SSG provide many more features and tools but for my approach I want to keep complexity minimal by design.
+    </p>
+
+    <h3>Setup</h3>
+
+    <p>
+      I've created a bash script that will setup our project structure and install all <b>npm</b> packages.
+      Create a new folder and <b>cd</b> into and create a bash script called <b>setup.sh</b>.
+    </p>
+
+    <p>
+      Copy the below code and run <b>bash setup.sh</b> in your console.
+    </p>
+
+  </section>
+
+  <section class="post__code-snippet">
+    <b>setup.sh</b>
+    <pre class="language-js">
+      <code class="language-js">
+        mkdir -p {css,html,js,img,fonts}
+        cd css && mkdir {styles,scripts}
+        cd scripts && touch imports.js critical.js postcss.config.js && cd ..
+        cd styles && mkdir {base,config,objects,globals,components,utilities,pages}
+        touch imports.css
+        cd base && touch defaults.css normalize.css typography.css && cd ..
+        cd components && touch component.css && cd ..
+        cd config && touch mixins.css functions.css variables.css && cd ..
+        cd globals && touch global.css && cd ..
+        cd objects && touch object.css && cd ..
+        cd pages && touch page.css && cd ..
+        cd utilities && touch utility.css && cd ..
+        cd ../..
+        cd js && touch scripts.js && echo "console.log('scripts.js is working');" > scripts.js && cd ..
+        cd html && mkdir -p {pages,templates}
+        cd templates && mkdir -p {views,components}
+        cd views && touch index.html
+        cd ../../..
+        touch README.md
+        npm init -y
+        npm i -D postcss postcss-cli postcss-load-config postcss-import postcss-preset-env purgecss critical stylelint stylelint-config-rational-order stylelint-config-standard cssnano autoprefixer browser-sync npm-run-all onchange
+        git init
+        touch .gitignore
+        echo "node_modules/" > .gitignore
+        echo "**/.DS_Store" > .gitignore
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      One advantage with PostHTML is running the configuration process from your package.json file itself.
+      <a href="https://github.com/posthtml/posthtml-load-config">posthtml-load-config</a> provides several options to auto load plugins,
+      I'll be using the package.json approach since this whole article is about NPM.
+    </p>
+
+    <p>
+      I will be using one directory called <b>html</b> with our <b>templates</b> and final
+      rendered pages that will be used for publishing the final site in <b>/pages</b>.
+      <b>/components</b> will where our partials go. Name it whatever!
+    </p>
+
+    <ul class="post__list-nested">
+      <li>
+        html
+        <ul>
+          <li>
+            pages
+          </li>
+          <li>
+            templates
+            <ul>
+              <li>
+                components
+              </li>
+              <li>
+                views
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section class="post__article">
+    <p>
+      The first script will run <b>posthtml</b> on our <b>/views</b> and output to <b>/pages</b>.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "dev:html": "posthtml 'html/templates/views/*.html' -o html/pages"
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      Finally, let's add a posthtml object to the package.json.
+      The plugins object will run your installed posthtml plugins in the order they are listed.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "posthtml": {
+          "plugins": {
+            ...
+          }
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <h3>Includes</h3>
+    <p>
+      PostHTML makes includes and modules trivial.
+      Let's see how easy this is to setup.
+      There are two packages that provide this functionality, <a href="https://github.com/posthtml/posthtml-modules">posthtml-modules</a> and
+      <a href="https://github.com/posthtml/posthtml-include">posthtml-include</a>.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-html">
+        &lt;module href=&quot;html/templates/components/head.html&quot;&gt;&lt;/module&gt;
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      The code below will render the <b>head.html</b> contents into our <b>index.html</b>.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-html">
+        &lt;!doctype html&gt;
+          &lt;html class=&quot;no-js&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+
+          &lt;module href=&quot;html/templates/components/head.html&quot;&gt;&lt;/module&gt;
+
+          &lt;body class=&quot;page&quot;&gt;
+
+            &lt;header class=&quot;page__header&quot;&gt;
+              &lt;h1&gt;Home Page&lt;/h1&gt;
+            &lt;/header&gt;
+            &lt;main class=&quot;page__main&quot;&gt;&lt;/main&gt;
+            &lt;footer class=&quot;page__footer&quot;&gt;&lt;/footer&gt;
+
+
+            &lt;noscript&gt;
+              &lt;link rel=&quot;stylesheet&quot; href=&quot;css/styles.css&quot;&gt;&lt;/noscript&gt;
+
+          &lt;/body&gt;
+          &lt;script src=&quot;js/scripts.js&quot;&gt;&lt;/script&gt;
+
+          &lt;/html&gt;
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      And finally, let's add the plugin to our package.json.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "posthtml": {
+          "from": "templates/views/*.html",
+          "to": "html/pages",
+          "plugins": {
+            "posthtml-modules": {
+              "root": "html/views"
+            }
+          }
+        }
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      Now let's run the dev:html command to compile our html.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre class="language-js">
+      <code class="language-js">
+        npm run dev:html
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <h3>Watch For Changes</h3>
+    <p>
+      We'll be using <a href="https://www.npmjs.com/package/browser-sync">browser-sync</a> and onchange to reload our changes when
+      we make an edit and hit the save command.
+      <b>dev:watch</b> will watch for changes specifically within the html/templates directory and not the entire html folder.
+    </p>
+
+    <p>
+      Browser-Sync handles the live reloading and syncs across multiple browsers.
+      This tool alone will save you so much time and clicks.
+    </p>
+
+    <p>
+      Our <b>dev:html</b> command from above compiles the final html to <b>'html/pages'</b>.
+      We will serve our static files from this directory by using <b>--ss</b> and passing our path.
+      The <b>--files</b> flag will watch for changes and live reload the browser when a change is detected.
+      <b>--no-notify</b> and will display a notice message when updated and <b>--no-open</b> will not open a new browser.
+    </p>
+
+    <p>
+
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "dev:watch": "onchange 'html/templates' -- run-p dev:html",
+        "dev:server": "browser-sync start --server --ss 'html/pages' --files 'html/templates/**/*.html' --no-notify --no-open"
+      </code>
+    </pre>
+  </section>
+
+
+  <section class="post__article">
+    <h3>Watch Out For Endless Loops</h3>
+    <p>
+      I found that if I watched the entire html folder that onchange would invoke an endless loop in my console.
+      The <b>dev:html</b> command is run anytime a change is made. New html is generated in the <b>/pages</b> folder.
+      When the output is generated, onchange would see this as a change event and fire the <b>dev:html</b> command again ad infinitum.
+      This requires a little structure and specificity in your build scripts, which ain't a bad thing.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "dev:watch": "onchange 'html' -- run-p dev:html" // will cause onchange to run in an endless loop
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <h3>Linting and Validating</h3>
+    <p>
+      At this point, we have two paths to take. Keep adding plugins to our posthtml configuration or separate things into
+      different build steps within our scripts section to be executed at a specific time or need.
+    </p>
+
+    <p>
+      We can lint our html as we develop and validate before we build our code into the <b>/dist</b>.
+      In other words, we don't need to validate our html against W3C every single time only when we are ready to publish.
+    </p>
+
+    <p>
+      Let's install the <a href="https://github.com/posthtml/posthtml-hint">posthtml-hint</a> package to lint our html in the dev workflow.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "posthtml": {
+          "from": "templates/views/*.html",
+          "to": "html/pages",
+          "plugins": {
+            "posthtml-modules": {
+              "root": "html/views"
+            },
+            "posthtml-hint": {}
+          }
+        }
+      </code>
+    </pre>
+  </section>
+
+
+  <section class="post__article">
+    <h3>Linting and Validating</h3>
+    <p>
+      When we run <b>dev:html</b>, the linter output is shown in the console.
+      We can use <b>posthtml-w3c</b> to validate our html against the W3C validator for a build step.
+    </p>
+  </section>
+
+
+  <section class="post__article">
+    <p>
+      We'll create a specific build step in our scripts section that calls the
+      <b>posthtml</b> command using the <b>--use</b> flag with <b>posthtml-w3c</b>.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "build:html-validate": "posthtml 'html/pages/*html' --use posthtml-w3c"
+      </code>
+    </pre>
+  </section>
+
+
+  <section class="post__article">
+    <h3>HTML to Classes</h3>
+    <p>
+      Ever write a page of markup only to have to recreate it with CSS?
+      There are handy <a href="https://htmltocss.github.io/">web tools</a> that will convert your markup to CSS.
+      Or you can just run it from your command line with <a href="https://github.com/rajdee/posthtml-classes">posthtml-classes</a>.
+    </p>
+
+    <p>
+      In the <b>utilities/html-css.js</b> there is this code:
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        const fs = require('fs');
+        const posthtml = require('posthtml');
+        const config = {
+                fileSave: true,
+                filePath: 'css/index.css', // change css output name
+                overwrite: true,
+                eol: '\n',
+                nested: true,
+                curlbraces: true,
+                elemPrefix: '__',
+                modPrefix: '_',
+                modDlmtr: '_'
+            }
+        const html = fs.readFileSync('html/templates/views/index.html');
+
+        posthtml()
+            .use(require('posthtml-classes')(config))
+            .process(html);
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      This will output nested SASS like CSS with ampersands and all.
+      Checkout the <b>css/index.css</b> for what it looks like.
+      I added a NPM command as well, just make sure to change paths and filenames in the script before running.
+    </p>
+
+    <p>
+      In the <b>utilities/html-css.js</b>, add this code:
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        const fs = require('fs');
+        const posthtml = require('posthtml');
+        const config = {
+                fileSave: true,
+                filePath: 'css/index.css', // change css output name
+                overwrite: true,
+                eol: '\n',
+                nested: true,
+                curlbraces: true,
+                elemPrefix: '__',
+                modPrefix: '_',
+                modDlmtr: '_'
+            }
+
+        // target the file to parse
+        const html = fs.readFileSync('html/templates/views/index.html');
+
+
+        posthtml()
+          .use(require('posthtml-classes')(config))
+          .process(html);
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      Update the <b>package.json</b> with this:
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "html:css": "node utilities/html-css.js"
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <h3>BEM</h3>
+    <p>
+      <a href="https://en.bem.info/methodology/">BEM</a> is a naming method for writing modular CSS.
+      BEM is an approach to writing maintainable CSS and is what I'm using at the current moment, so skip over if not interested.
+
+      The <a href="https://github.com/rajdee/posthtml-bem">posthtml-bem</a> will convert some special html markup into
+      plain html with the BEM class structure. With some special syntax like below:
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-html">
+        &lt;body block=&quot;page&quot;&gt;
+          &lt;header elem=&quot;header&quot;&gt;
+            &lt;h1&gt;PostHTML Classes&lt;/h1&gt;
+          &lt;/header&gt;
+          &lt;main elem=&quot;main&quot;&gt;
+
+          &lt;/main&gt;
+          &lt;footer elem=&quot;footer&quot;&gt;&lt;/footer&gt;
+
+
+          &lt;noscript&gt;
+            &lt;link rel=&quot;stylesheet&quot; href=&quot;css/styles.css&quot;&gt;
+          &lt;/noscript&gt;
+        &lt;/body&gt;
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      <a href="https://en.bem.info/methodology/">BEM</a> is a naming method for writing modular CSS.
+      BEM is an approach to writing maintainable CSS and is what I'm using at the current moment, so skip over if not interested.
+
+      The <a href="https://github.com/rajdee/posthtml-bem">posthtml-bem</a> will convert some special html markup into
+      plain html with the BEM class structure. With some special syntax like below:
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-html">
+        &lt;body class=&quot;page&quot;&gt;
+
+          &lt;header class=&quot;page__header&quot;&gt;
+            &lt;h1&gt;PostHTML Classes&lt;/h1&gt;
+          &lt;/header&gt;
+          &lt;main class=&quot;page__main&quot;&gt;
+
+          &lt;/main&gt;
+          &lt;footer class=&quot;page__footer&quot;&gt;&lt;/footer&gt;
+
+          &lt;noscript&gt;
+            &lt;link rel=&quot;stylesheet&quot; href=&quot;css/styles.css&quot;&gt;
+          &lt;/noscript&gt;
+        &lt;/body&gt;
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      I can see a workflow like this:
+    </p>
+
+    <ol class="post__list-plain">
+      <li>Write html using BEM markup and compile to regular HTML with <b>posthtml-bem</b></li>
+      <li>Convert markup to CSS structure with above <b>posthtml-classes</b> script</li>
+      <li>make changes to new markup and styles as needed</li>
+    </ol>
+
+    <p>
+      This could be helpful when first starting out on a project where you doing more markup coding and figuring things out.
+      I usually do a rewrite at least 1-3 times before I have settled on my final structure.
+      The above workflow can be helpful once you get used to it. Definitely follows in the steps of DRY.
+    </p>
+
+    <p>
+      You could totally run this process with onchange to compile BEM markup to HTML but
+      you would need to modify bem.js to be dynamic and watch the bem/ directory to compile.
+      Sounds like another posthtml plugin.
+    </p>
+
+  </section>
+
+  <section class="post__article">
+    <h3>Favicons</h3>
+    <p>
+      You always need favicons and <a href="https://github.com/mohsen1/posthtml-favicons">posthtml-favicons</a> has got you covered with extensive configuration options.
+      With default settings enabled you will tons of favicon sizes for all types of sources.
+      You do not need them all, so spend some time to select those you need.
+    </p>
+  </section>
+
+  <section class="post__article">
+    <h3>Build Steps</h3>
+    <p>
+      Cool, we learned some really awesome features of posthtml and improved our dev workflow along the way. Let's publish our site.
+    </p>
+
+    <p>
+      I tried using <a href="https://github.com/Rebelmail/posthtml-minifier">posthtml-minifier</a> but it didn't work for some reason.
+      It is basically a wrapper around <a href="https://github.com/kangax/html-minifier">html-minifier</a>.
+      We simply create a dist folder with some directories for our files, minify our html files and copy them into <b>/dist</b>.
+    </p>
+
+    <p>
+      We can run all the build steps in serial with the run-s command:
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        "build:dist": "mkdir -p dist/{css,js,img,fonts/web}",
+        "build:html-validate": "posthtml 'html/pages/*html' --use posthtml-w3c",
+        "build:minify": "html-minifier --input-dir html/pages --output-dir dist --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-tag-whitespace",
+        "build:html-dist": "npm run dev:html && cp html/pages/*.html dist",
+        "build": "run-s build:*"
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <h3>Next Level</h3>
+    <p>
+      In terms of performance, the next level would be to uglify CSS classnames and ID's but that is bit cumbersome and tedious with my current setup.
+      While def not necessary, it can only help with site speed.
+      This shows where rolling your own build tool begins to breakdown.
+      Webpack provides packages that do this.
+    </p>
+  </section>
+
+</article>

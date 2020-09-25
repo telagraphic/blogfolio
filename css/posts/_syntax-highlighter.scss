@@ -142,3 +142,11 @@ pre[class*="language-"] {
 .token.entity {
 	cursor: help;
 }
+
+.token.atrule .token.string {
+	background: transparent;
+}
+
+.token.operator {
+	background: transparent;
+}
