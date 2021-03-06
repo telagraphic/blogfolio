@@ -24,7 +24,7 @@ permalink: /flexulator
 
     <p>
       While learning flexbox, I got inspired to build <a href="https://www.flexulator.com/">Flexulator</a> a handy tool that visually illustrates
-      how the spacing algorithm works. I decided to update the website with an improved look and refactor the spaghetti code.
+      how the spacing algorithm works. The first version was made in 2018 and I decided to update the website with an improved look and refactor the spaghetti code.
     </p>
 
     <p>
@@ -44,9 +44,7 @@ permalink: /flexulator
 
     <p>
       Firefox Dev Tools inspired the look and feel, I cold copied styles and colors to give the site
-      the look and feel of aweb tool. It only makes sense, the
-      <a href="https://www.mozilla.org/en-US/firefox/developer/">Firefox Developer Edition</a> really best Chrome's dev tools when it comes
-      to <b>Grid</b> and <b>Flexbox</b>. Check out how they designed the
+      the look and feel of a web tool. Check out how they designed the
       <a href="https://hacks.mozilla.org/2019/01/designing-the-flexbox-inspector/">Flexbox inspector</a>.
     </p>
   </section>
@@ -67,8 +65,8 @@ permalink: /flexulator
         Could be improved with first reading, calculating and then writing to the DOM.
       </li>
       <li>
-        Lack of code design, which is fine but would help in keeping the calculations easier to write.
-        Will write tests next refactor sometime in 2022 :=)
+        Lack of code design, which is fine but would help in keeping the calculation functions easier to write.
+        An <b>Observer</b> design pattern could be a good idea for the next version.
       </li>
       <li>
         An explanation of each formula value.
@@ -88,9 +86,9 @@ permalink: /flexulator
     <h3>Workflow</h3>
 
     <p>
-      Side projects require evenings and weekends, will requires a workflow that optimizes
+      Side projects require evenings and weekends and a workflow that optimizes
       for small wins and incremental progress.
-      Time contraints force you to be more intentional and specific on with your work.
+      Time contraints force you to be more intentional and specific with your work.
     </p>
 
     <p>
@@ -98,6 +96,9 @@ permalink: /flexulator
       easily tracked.
       I use these tools like a Trello board, referencing articles and stackoverflow posts for
       each issue/card as well keeping checklists of all the steps required to complete the task.
+    </p>
+
+    <p>
       If you keep track of each work session and document it,
       you'll see how much work goes into a "simple" component of a feature.
       This is crucial for learning and planning your next side-project, if that's your thing.
@@ -107,6 +108,9 @@ permalink: /flexulator
       Having worked on agile teams as a test analyst, we were required to track our progress
       on our current iteration cards. It built a habit of keeping a history,
       very helpful for many reasons like proving that you actually do work at your job.
+    </p>
+
+    <p>
       Unlike working on an agile team, side projects
       are full of unknowns as you start to build it. You realize things will require more time as you need to learn about a technology,
       research the numerous possible approaches and try out several failed attempts.
@@ -126,8 +130,8 @@ permalink: /flexulator
 
     <h3>Quantifying Work</h3>
     <p>
-      <b>Milestones</b> are great for breaking down your project into bigger chunks and then further decomposed into issues.
-      Quantifying your work will wrap your head around the problem. Maybe you want to learn a new technology paired with
+      <b>Milestones</b> are great for breaking down your project into smaller chunks and then further decomposed into cards.
+      Quantifying your work helps to wrap your head around the problem. Maybe you want to learn a new technology paired with
       skills you have picked up. Planning this out will help you stay on course when you get lost in the weeds and frustrated.
       Maintaining that big picture can maintain motivation and provide clarity.
     </p>
@@ -179,7 +183,8 @@ permalink: /flexulator
 
   <section class="post__article">
     <p>
-      That's a grand total of 34 UI elements to code and design.
+      That's a grand total of 34 UI elements to code and design. That's a lot more work than it seems when you first
+      start out and understanding this helps you not lose motivation when you are going slower than you anticipated.
     </p>
   </section>
 
@@ -190,13 +195,18 @@ permalink: /flexulator
       The first version was a 500 line spaghetti code mess of code that worked, but it needed improvements.
       When reviewing the code, it dawned on me that the shrink calculation in the third step was wrong.
       There are enough steps in the calculation to get things crossed up and some javascript objects could
-      help keep my code better organized. After some psuedo code on paper, I determined a simple logic flow
+      help keep my code better organized.
+    </p>
+
+    <p>
+      After writing some psuedo-code on paper, I determined a simple logic flow
       of <b>1)</b> reading values, <b>2)</b> doing calculations and then <b>3)</b> writing them to the DOM upon a resize or flex-item addition or removal.
       This provided a simple model of thinking about how to structure my code.
     </p>
 
-    <h3>Structure</h3>
+    <h3>Component Structure</h3>
     <p>
+      The flex item is really the main component of the tool.
       Each flex item has it's own flex state reflected in the four sections below.
     </p>
   </section>
@@ -214,9 +224,13 @@ permalink: /flexulator
   <section class="post__article">
     <p>
       Each flex item object would have to keep track of each of these attributes on the UI.
-      I set about creating a <b>selectors</b> object that references each child element, an <b>elements</b> object that
+      I set about creating a <b>selectors</b> object that references each child element within the parent element, an <b>elements</b> object that
       stored those elements for reading and writing, and finally a <b>flexulations</b> object to be used for reading/writing the flex values
-      that are re-calculated on a browser resize or flex-item form change. The UI will be modified with a function
+      that are re-calculated on a browser resize or flex-item form change.
+    </p>
+
+    <p>
+      The UI will be modified with a function
       that reads the new <b>flexulations</b> and updates the DOM <b>elements</b>. You'll notice there is a <b>container</b> property
       that will keep track of the flex-parent item values. It will be needed in the formula for determining how much space is available.
     </p>
