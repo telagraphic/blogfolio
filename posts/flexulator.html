@@ -188,6 +188,105 @@ permalink: /flexulator
     </p>
   </section>
 
+  <section class="post__article">
+    <h3>Grow vs. Shrink</h3>
+    <p>
+      Buttons at the bottom of the form allow the user to toggle between grow and shrink scenarios.
+      This really helps to see the how the two formula's work right in the browser.
+    </p>
+
+    <p>
+      The <b>grow</b> button will make each flex-item size only 100px so that the <b>total-flex-basis</b> is significantly smaller than the container.
+      The <b>shrink</b> button does the opposite, increasing each flex item size to make the <b>total-flex-basis</b> exceed the container size.
+    </p>
+
+    <figure class="post__figure-video">
+      <video autoplay loop muted playsinline>
+        <source src="{{site.baseurl}}assets/flexulator/grow-shrink-mode.webm" type="video/webm">
+        <source src="{{site.baseurl}}assets/flexulator/grow-shrink-mode.mp4" type="video/mp4">
+      </video>
+      <figcaption>
+        <h5>
+          Grow & Shrink Modes
+        </h5>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="post__article">
+    <h3>Grow and Shrink Explained</h3>
+    <p>
+      I break the math down into a multi-step process that hopefully makes it understandable as to how the
+      spacing algorithm works. A nice animation helps too.
+      Heavily referencing <a href="https://www.madebymike.com.au/writing/understanding-flexbox/">Mike Riethmuller</a>
+      here.
+    </p>
+
+    <figure class="post__figure-video">
+      <video autoplay loop muted playsinline>
+        <source src="{{site.baseurl}}assets/flexulator/flex-example-demo.webm" type="video/webm">
+        <source src="{{site.baseurl}}assets/flexulator/flex-example-demo.mp4" type="video/mp4">
+      </video>
+      <figcaption>
+        <h5>
+          Flex Formula
+        </h5>
+      </figcaption>
+    </figure>
+  </section>
+
+
+  <section class="post__article">
+    <h3>Critical CSS Inlining</h3>
+    <p>
+      I've heard about inlining above the fold styles or critical CSS and had to try it out.
+      There are several npm packages out there and I went with <a href="https://github.com/addyosmani/critical">critical</a> by Addy Osmani.
+      It's super easy to setup and get going, it also offers multiple viewport sizes.
+      Add this to your build process and it will improve performance which you can check with Chrome's <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a>
+    </p>
+
+    <p>
+      In the code below, I'm running critical against the <b>/dist</b> directory which will read the <b>index.html</b>
+      and output a new index.html in the same directory, overwriting the original.
+    </p>
+  </section>
+
+  <section class="post__code-snippet">
+    <pre>
+      <code class="language-js">
+        var critical = require('critical');
+
+        critical.generate({
+          inline: true,
+          base: 'dist',
+          src: 'index.html',
+          target: {
+            html: 'index.html'
+          },
+          minify: true,
+          dimensions: [
+            {
+              width: 320,
+              height: 480
+            },
+            {
+              width: 2000,
+              height: 1000
+            }
+          ]
+        });
+      </code>
+    </pre>
+  </section>
+
+  <section class="post__article">
+    <p>
+      With our above the fold critical css inlined into our page, you will want to
+      <a href="https://github.com/filamentgroup/loadCSS/">load your CSS asynchronously</a> to prevent unnecessary page rendering delay.
+      CSS is typically loaded at the top of the page and will block page rendering.
+    </p>
+  </section>
+
 
   <section class="post__article">
     <h3>Javascript Refactor</h3>
@@ -397,101 +496,6 @@ permalink: /flexulator
         },
       </code>
     </pre>
-  </section>
-
-  <section class="post__article">
-    <h3>Grow vs. Shrink</h3>
-    <p>
-      Buttons at the bottom of the form allow the user to toggle between grow and shrink scenarios.
-      This really helps to see the how the two formula's work.
-    </p>
-
-    <figure class="post__figure-video">
-      <video autoplay loop muted playsinline>
-        <source src="{{site.baseurl}}assets/flexulator/grow-shrink-mode.webm" type="video/webm">
-        <source src="{{site.baseurl}}assets/flexulator/grow-shrink-mode.mp4" type="video/mp4">
-      </video>
-      <figcaption>
-        <h5>
-          Grow & Shrink Modes
-        </h5>
-      </figcaption>
-    </figure>
-  </section>
-
-
-  <section class="post__article">
-    <h3>Grow and Shrink Explained</h3>
-    <p>
-      I break the math down into a multi-step process that hopefully makes it understandable as to how the
-      spacing algorithm works. A nice animation helps too.
-      Heavily referencing <a href="https://www.madebymike.com.au/writing/understanding-flexbox/">Mike Riethmuller</a>
-      here.
-    </p>
-
-    <figure class="post__figure-video">
-      <video autoplay loop muted playsinline>
-        <source src="{{site.baseurl}}assets/flexulator/flex-example-demo.webm" type="video/webm">
-        <source src="{{site.baseurl}}assets/flexulator/flex-example-demo.mp4" type="video/mp4">
-      </video>
-      <figcaption>
-        <h5>
-          Flex Formula
-        </h5>
-      </figcaption>
-    </figure>
-  </section>
-
-
-  <section class="post__article">
-    <h3>Critical CSS Inlining</h3>
-    <p>
-      I've heard about inlining above the fold styles or critical CSS and had to try it out.
-      There are several npm packages out there and I went with <a href="https://github.com/addyosmani/critical">critical</a> by Addy Osmani.
-      It's super easy to setup and get going, it also offers multiple viewport sizes.
-      Add this to your build process and it will improve performance which you can check with Chrome's <a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a>
-    </p>
-
-    <p>
-      In the code below, I'm running critical against the <b>/dist</b> directory which will read the <b>index.html</b>
-      and output a new index.html in the same directory, overwriting the original.
-    </p>
-  </section>
-
-  <section class="post__code-snippet">
-    <pre>
-      <code class="language-js">
-        var critical = require('critical');
-
-        critical.generate({
-          inline: true,
-          base: 'dist',
-          src: 'index.html',
-          target: {
-            html: 'index.html'
-          },
-          minify: true,
-          dimensions: [
-            {
-              width: 320,
-              height: 480
-            },
-            {
-              width: 2000,
-              height: 1000
-            }
-          ]
-        });
-      </code>
-    </pre>
-  </section>
-
-  <section class="post__article">
-    <p>
-      With our above the fold critical css inlined into our page, you will want to
-      <a href="https://github.com/filamentgroup/loadCSS/">load your CSS asynchronously</a> to prevent unnecessary page rendering delay.
-      CSS is typically loaded at the top of the page and will block page rendering.
-    </p>
   </section>
 
 </article>
