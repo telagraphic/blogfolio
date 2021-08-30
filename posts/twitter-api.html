@@ -60,7 +60,7 @@ permalink: /twitter-api
 
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         const Twitter = require('twitter-lite');
 
@@ -106,7 +106,7 @@ permalink: /twitter-api
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         async function getTweeters() {
           return new Promise((resolve, reject) => {
@@ -145,7 +145,7 @@ permalink: /twitter-api
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         async function getTweets(users) {
 
@@ -181,7 +181,7 @@ permalink: /twitter-api
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         async function getUserTweets(user) {
 
@@ -257,7 +257,7 @@ permalink: /twitter-api
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         async function saveTweets(tweets) {
           fs.writeFileSync(`./tweets.json`, JSON.stringify(tweets));
@@ -275,7 +275,7 @@ permalink: /twitter-api
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         getTweeters()
           .then(getTweets)
@@ -293,7 +293,7 @@ permalink: /twitter-api
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         async function getAllTweets() {
           let tweeters = await getTweeters();

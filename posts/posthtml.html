@@ -171,7 +171,7 @@ permalink: /posthtml
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-html">
       <code class="language-html">
         &lt;module href=&quot;html/templates/components/head.html&quot;&gt;&lt;/module&gt;
       </code>
@@ -186,7 +186,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>html/templates/views/index.html</b>
-    <pre>
+    <pre class="language-html">
       <code class="language-html">
         &lt;html class=&quot;no-js&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
 
@@ -211,7 +211,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>html/templates/components/head.html</b>
-    <pre>
+    <pre class="language-html">
       <code class="language-html">
         &lt;head&gt;
           &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -236,7 +236,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>html/templates/components/head.html</b>
-    <pre>
+    <pre class="language-html">
       <code class="language-html">
         &lt;html class=&quot;no-js&quot; lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
 
@@ -288,7 +288,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>package.json</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         "posthtml": {
           "plugins": {
@@ -359,7 +359,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>package.json</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         "html:watch": "onchange 'html/templates' -- run-p html:process",
         "dev:server": "browser-sync start --server --ss 'html/pages' --files 'html/templates/**/*.html' --no-notify --no-open"
@@ -380,7 +380,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>package.json</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         "html:watch": "onchange 'html' -- run-p html:process" // will cause onchange to run in an endless loop
       </code>
@@ -406,7 +406,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>package.json</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         "posthtml": {
           "plugins": {
@@ -435,7 +435,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>package.json</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         "build:html-validate": "posthtml 'html/pages/*html' --use posthtml-w3c"
       </code>
@@ -459,7 +459,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>utilities/html-css.js</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         const fs = require('fs');
         const posthtml = require('posthtml');
@@ -491,7 +491,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>html/templates/views/index.html</b>
-    <pre>
+    <pre class="language-html">
       <code class="language-html">
         &lt;body class=&quot;index&quot;&gt;
           &lt;header class=&quot;index__header&quot;&gt;
@@ -514,7 +514,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>package.json</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         "html:css": "node utilities/html-css.js"
       </code>
@@ -528,7 +528,7 @@ permalink: /posthtml
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         npm run html:css
       </code>
@@ -543,7 +543,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>css/index.css</b>
-    <pre>
+    <pre class="language-css">
       <code class="language-css">
         .index {
           &__header {
@@ -571,7 +571,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>html/templates/bem/index.html</b>
-    <pre>
+    <pre class="language-html">
       <code class="language-html">
         &lt;body block=&quot;page&quot;&gt;
           &lt;header elem=&quot;header&quot;&gt;
@@ -599,7 +599,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>html/templates/views/index.html</b>
-    <pre>
+    <pre class="language-html">
       <code class="language-html">
         &lt;body class=&quot;page&quot;&gt;
 
@@ -665,7 +665,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>utlities/favicons.js</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         const fs = require('fs');
         const posthtml = require('posthtml');
@@ -694,7 +694,7 @@ permalink: /posthtml
 
   <section class="post__code-snippet">
     <b>package.json</b>
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         "html:favicon": "node utilities/favicons.js",
       </code>
@@ -708,7 +708,7 @@ permalink: /posthtml
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         npm run html:favicons
       </code>
@@ -733,7 +733,7 @@ permalink: /posthtml
   </section>
 
   <section class="post__code-snippet">
-    <pre>
+    <pre class="language-js">
       <code class="language-js">
         "build:dist": "mkdir -p dist/{css,js,img,fonts}",
         "build:html-validate": "posthtml 'html/pages/*html' --use posthtml-w3c",
@@ -755,7 +755,7 @@ permalink: /posthtml
 
     <p>
       That's it!
-      This should cover simple web development workflows with some nifty tools for publishing a simple site.
+      This should cover simple web development workflows.
     </p>
   </section>
 

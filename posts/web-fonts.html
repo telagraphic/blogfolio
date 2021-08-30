@@ -44,8 +44,8 @@ permalink: /web-fonts
   <figure class="post__figure">
     <figcaption>
       <h5>
-      Public Sans Weights and Styles
-    </h5>
+        Public Sans Weights and Styles
+      </h5>
     </figcaption>
     <img src="{{site.baseurl}}assets/web-fonts/public-sans-weights.png" alt="Public Sans Weights and Styles"><img>
   </figure>
@@ -53,130 +53,130 @@ permalink: /web-fonts
 
 
 
-    <section class="post__article">
-      <h3>Optimizing with Font Tools</h3>
-      <p>
-        First up, we need to optimize our font files to reduce file size via <b>subsetting</b> and using <b>WOFF</b> and <b>WOFF2</b> font files.
-        Check out my blog about <a href="{{site.baseurl}}/font-tools">Web Font Tooling</a> to set up your computer with the tools I'll be using below.
-      </p>
+  <section class="post__article">
+    <h3>Optimizing with Font Tools</h3>
+    <p>
+      First up, we need to optimize our font files to reduce file size via <b>subsetting</b> and using <b>WOFF</b> and <b>WOFF2</b> font files.
+      Check out my blog about <a href="{{site.baseurl}}/font-tools">Web Font Tooling</a> to set up your computer with the tools I'll be using below.
+    </p>
 
-      <p>
-        I'll be following the web font genius <a href="https://www.zachleat.com/web/css-tricks-web-fonts/">Zach Leat's guide for 2-stage font loading.</a>
-      </p>
+    <p>
+      I'll be following the web font genius <a href="https://www.zachleat.com/web/css-tricks-web-fonts/">Zach Leat's guide for 2-stage font loading.</a>
+    </p>
 
-      <p>
-        <b>Public Sans</b> comes with web font files, but I will be further optimizing them with <b>pyftsubset</b>.
-        Here's a look at the <b>True Type</b> format file sizes for each style. There is a total of <b>18</b> fonts that
-        add up to <b>1.2 Megabytes</b>.
-      </p>
-    </section>
+    <p>
+      <b>Public Sans</b> comes with web font files, but I will be further optimizing them with <b>pyftsubset</b>.
+      Here's a look at the <b>True Type</b> format file sizes for each style. There is a total of <b>18</b> fonts that
+      add up to <b>1.2 Megabytes</b>.
+    </p>
+  </section>
 
-    <figure class="post__figure">
-      <figcaption>
-        <h5>
+  <figure class="post__figure">
+    <figcaption>
+      <h5>
         Public Sans Font File Sizes
       </h5>
-      </figcaption>
-      <img src="{{site.baseurl}}assets/web-fonts/true-type-kb-size.png" alt="Public Sans True Type File Sizes"></img>
-    </figure>
+    </figcaption>
+    <img src="{{site.baseurl}}assets/web-fonts/true-type-kb-size.png" alt="Public Sans True Type File Sizes"></img>
+  </figure>
 
 
-    <section class="post__article">
+  <section class="post__article">
 
-      <p>
-        Here is the <b>pyftsubset</b> command for subsetting the font files.
-        I ran this for each file.
-      </p>
+    <p>
+      Here is the <b>pyftsubset</b> command for subsetting the font files.
+      I ran this for each file.
+    </p>
 
-      <section class="post__code-highlight">
-        <figure>
-          <code>
+    <section class="post__code-highlight">
+      <figure>
+        <code>
           pyftsubset "PublicSans-Thin.ttf" --output-file="PublicSans-Thin.woff2" --flavor=woff2 --layout-features="ccmp,locl,mark,mkmk,kern" --desubroutinize --unicodes=U+0-10FFFF
         </code>
-        </figure>
-      </section>
-
-      <p>
-        All 18 files add up to <b>390 Kilobytes</b> file size.
-        The browser will determine which files to download, <b>WOFF2</b> or <b>WOFF</b>.
-      </p>
-
+      </figure>
     </section>
 
+    <p>
+      All 18 files add up to <b>390 Kilobytes</b> file size.
+      The browser will determine which files to download, <b>WOFF2</b> or <b>WOFF</b>.
+    </p>
 
-    <figure class="post__figure">
-      <figcaption>
-        <h5>
+  </section>
+
+
+  <figure class="post__figure">
+    <figcaption>
+      <h5>
         File Sizes After Subsetting
       </h5>
-      </figcaption>
-      <img src="{{site.baseurl}}assets/web-fonts/fonts-subset-kb-size.png" alt="File Sizes After Subsetting"></img>
+    </figcaption>
+    <img src="{{site.baseurl}}assets/web-fonts/fonts-subset-kb-size.png" alt="File Sizes After Subsetting"></img>
 
-    </figure>
+  </figure>
 
-    <section class="post__article">
-      <h3>
-        2 Stage Loading
-      </h3>
+  <section class="post__article">
+    <h3>
+      2 Stage Loading
+    </h3>
 
-      <p>
-        I'm using Zach Leats <a href="https://github.com/zachleat/web-font-loading-recipes#fout">Web Font Loading Recipes</a>
-        for the font loading code with some modifications.
-        <a href="https://gist.github.com/telagraphic/5b1a548329e54b4c8548fb3e9d95ce6c">Here is the code.</a>
-      </p>
+    <p>
+      I'm using Zach Leats <a href="https://github.com/zachleat/web-font-loading-recipes#fout">Web Font Loading Recipes</a>
+      for the font loading code with some modifications.
+      <a href="https://gist.github.com/telagraphic/5b1a548329e54b4c8548fb3e9d95ce6c">Here is the code.</a>
+    </p>
 
-      <p>
-        When a user lands on the homepage, there are only 3 fonts used:
-        <b>Bold</b> for the navigation links, <b>Extra Bold</b> for the heading, and <b>Extra-Light</b> for the short description.
-        The <b>CSS Font Loading API</b>, a javascript API for loading fonts will load the other remaining 15 fonts.
-        A browser usually allows a max of 6 network connects at a time. Using the <b>preload</b> hint will move the priority of
-        our first stage fonts to the top of the list.
-      </p>
+    <p>
+      When a user lands on the homepage, there are only 3 fonts used:
+      <b>Bold</b> for the navigation links, <b>Extra Bold</b> for the heading, and <b>Extra-Light</b> for the short description.
+      The <b>CSS Font Loading API</b>, a javascript API for loading fonts will load the other remaining 15 fonts.
+      A browser usually allows a max of 6 network connects at a time. Using the <b>preload</b> hint will move the priority of
+      our first stage fonts to the top of the list.
+    </p>
 
-      <p>
-        Our <b>@font-face</b> declarations will initiate font downloads for the first stage.
-        This is paired with <b>resource hints</b> for the browser using preload for the 3 fonts on the homepage.
-        Preloading will help reduce <b>FOUT</b>, the flash of unstyled text.
-      </p>
+    <p>
+      Our <b>@font-face</b> declarations will initiate font downloads for the first stage.
+      This is paired with <b>resource hints</b> for the browser using preload for the 3 fonts on the homepage.
+      Preloading will help reduce <b>FOUT</b>, the flash of unstyled text.
+    </p>
 
-      <p>
-        You can see our preload fonts in the waterfall, they are loaded right after the <b>First Meaningful Paint</b>, a user centric
-        metric from the
-        <a href="https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics#first_meaningful_paint_and_hero_element_timing">Google Chrome team</a>.
-      </p>
+    <p>
+      You can see our preload fonts in the waterfall, they are loaded right after the <b>First Meaningful Paint</b>, a user centric
+      metric from the
+      <a href="https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics#first_meaningful_paint_and_hero_element_timing">Google Chrome team</a>.
+    </p>
 
-    </section>
+  </section>
 
-    <figure class="post__figure">
-      <figcaption>
-        <h5>
+  <figure class="post__figure">
+    <figcaption>
+      <h5>
         Chrome Network Tab
       </h5>
-      </figcaption>
-      <img src="{{site.baseurl}}assets/web-fonts/network-online.png" alt="Chrome Network Tab"></img>
-    </figure>
+    </figcaption>
+    <img src="{{site.baseurl}}assets/web-fonts/network-online.png" alt="Chrome Network Tab"></img>
+  </figure>
 
-    <figure class="post__figure">
-      <figcaption>
-        <h5>
+  <figure class="post__figure">
+    <figcaption>
+      <h5>
         Chrome Network Tab
       </h5>
-      </figcaption>
-      <img src="{{site.baseurl}}assets/web-fonts/performance-online.png" alt="Chrome Performance Tab"></img>
-    </figure>
+    </figcaption>
+    <img src="{{site.baseurl}}assets/web-fonts/performance-online.png" alt="Chrome Performance Tab"></img>
+  </figure>
 
-    <section class="post__article">
-      <h3>
-        Using Our Fonts
-      </h3>
+  <section class="post__article">
+    <h3>
+      Using Our Fonts
+    </h3>
 
-      <p>
-        <b>Public Sans</b> is the family name and we use that as our font names in the <b>FontFace</b> declaration.
-        We then set the <b>weight</b> and <b>style</b> accordingly.
-      </p>
+    <p>
+      <b>Public Sans</b> is the family name and we use that as our font names in the <b>FontFace</b> declaration.
+      We then set the <b>weight</b> and <b>style</b> accordingly.
+    </p>
 
-      <script src="https://gist.github.com/telagraphic/b2fed86a65e275ca622e4f40b32845f7.js"></script>
+    <script src="https://gist.github.com/telagraphic/b2fed86a65e275ca622e4f40b32845f7.js"></script>
 
-    </section>
+  </section>
 
 </article>

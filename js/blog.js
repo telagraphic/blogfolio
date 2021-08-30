@@ -1,21 +1,3 @@
-// <section class="work__project">
-//   <a class="portfolio" href="http://www.flexulator.com/">
-//     <header class="portfolio__header">
-//       <h3>Flexulator</h3>
-//     </header>
-//     <section class="portfolio__body">
-//       <section class="portfolio__picture">
-//         <img src="{{site.baseurl}}assets/img/portfolio/flexulator.png" alt="Flexulator"></img>
-//       </section>
-//       <section class="portfolio__description">
-//         <p>
-//           Flexbox space distribution algorithm visualizer
-//         </p>
-//       </section>
-//     </section>
-//   </a>
-// </section>
-
 const projects = document.querySelectorAll('.work__project');
 
 projects.forEach(project => {
@@ -58,6 +40,12 @@ barba.init({
             .set('.barba-container', {opacity: 0, y: '5%'})
             .to('.barba-container', {opacity: 1, y: '0%'})
         })
+      },
+      beforeEnter({current, next, trigger}) {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
       },
       enter({current, next, trigger}) {
         return new Promise(resolve => {
